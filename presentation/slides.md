@@ -34,26 +34,26 @@ transition: fade-out
 
 # Agenda
 
-<div class="grid grid-cols-2 gap-x-8 gap-y-2 mt-4">
+<div class="grid grid-cols-2 gap-x-6 gap-y-1 mt-2" style="font-size: 0.92em;">
 
 <div class="feature-card">
 <h4>🌏 <a href="/3">What are Azure Extended Zones?</a></h4>
-<p>Small-footprint extensions of Azure regions</p>
+<p>Architecture, key scenarios, overview diagram</p>
 </div>
 
 <div class="feature-card">
-<h4>📍 <a href="/5">Perth Extended Zone Overview</a></h4>
+<h4>📍 <a href="/5">Perth Extended Zone</a></h4>
 <p>Why it matters for Western Australia</p>
 </div>
 
 <div class="feature-card">
-<h4>🏗️ <a href="/6">Deployment Scenarios</a></h4>
+<h4>🏗️ <a href="/7">Deployment Scenarios</a></h4>
 <p>Standalone and Extension patterns</p>
 </div>
 
 <div class="feature-card">
-<h4>⚙️ <a href="/7">Service Availability</a></h4>
-<p>Available services, SLAs, and ISVs</p>
+<h4>⚙️ <a href="/8">Services, SLAs & ISVs</a></h4>
+<p>Available services and timelines</p>
 </div>
 
 <div class="feature-card">
@@ -62,23 +62,28 @@ transition: fade-out
 </div>
 
 <div class="feature-card">
-<h4>🔄 <a href="/12">Business Continuity & DR</a></h4>
+<h4>🔄 <a href="/13">Business Continuity & DR</a></h4>
 <p>Availability, backup, and recovery</p>
 </div>
 
 <div class="feature-card">
-<h4>🔒 <a href="/13">Security & Compliance</a></h4>
+<h4>🔒 <a href="/14">Security & Compliance</a></h4>
 <p>Security services and data residency</p>
 </div>
 
 <div class="feature-card">
-<h4>📋 <a href="/14">Design Decisions</a></h4>
-<p>Key recommendations and pricing</p>
+<h4>🏢 <a href="/15">Design Considerations</a></h4>
+<p>Resource org, management, observability</p>
 </div>
 
-<div class="feature-card" style="grid-column: span 2;">
-<h4>⚔️ <a href="/17">Competitive Positioning — Azure PEZ vs AWS</a></h4>
-<p>Why Azure PEZ offers a stronger local cloud than AWS Local Zones</p>
+<div class="feature-card">
+<h4>💰 <a href="/20">Pricing & Design Decisions</a></h4>
+<p>Key recommendations and billing</p>
+</div>
+
+<div class="feature-card">
+<h4>⚔️ <a href="/21">Competitive Positioning</a></h4>
+<p>Azure PEZ vs AWS Local Zones</p>
 </div>
 
 </div>
@@ -565,6 +570,206 @@ Data processed **within Western Australia**.
 <p style="font-size: 0.8em; color: #6e6e6e; margin-top: 0.5em;">
 Some limited scenarios may store data outside selected geography.
 </p>
+
+</div>
+
+</div>
+
+---
+layout: section
+---
+
+# Design Considerations
+
+## Resource Organisation, Management & Observability
+
+---
+transition: slide-left
+---
+
+# Resource Organisation
+
+<div class="grid grid-cols-2 gap-6 mt-1">
+
+<div>
+
+<div class="feature-card mb-2">
+<h4>🌏 Parent Region</h4>
+<p><strong>Control plane</strong> stays in the parent region (Australia East). Portal views show the parent region for resource types like Virtual Networks.</p>
+</div>
+
+<div class="feature-card mb-2">
+<h4>📋 Subscriptions</h4>
+<p><strong>Dedicate specific subscriptions</strong> for Extended Zone deployments to monitor quotas and avoid confusion with parent region resources.</p>
+</div>
+
+<div class="feature-card mb-2">
+<h4>🏢 Management Groups</h4>
+<p>Not tied to any Azure Region — can be used with both Extended Zone subscriptions and deployed resources.</p>
+</div>
+
+</div>
+
+<div>
+
+<div class="azure-card mb-3">
+
+### Resource Groups
+
+Resource groups **cannot be created** within an Azure Extended Zone.
+
+| Constraint | Guidance |
+|:-----------|:---------|
+| **RG Location** | Must be in parent region |
+| **Naming** | Use convention to identify EZ resources |
+| **RBAC** | Applied as scope for governance |
+| **Policy** | Azure Policy applies to EZ resources |
+
+</div>
+
+<blockquote style="font-size: 0.8em;">
+💡 Register subscription(s) for Extended Zone access via the controlled access process.
+</blockquote>
+
+</div>
+
+</div>
+
+---
+transition: slide-up
+---
+
+# Management
+
+<div class="grid grid-cols-2 gap-6 mt-1">
+
+<div>
+
+<div class="feature-card mb-2">
+<h4>🔐 Azure Bastion</h4>
+<p><span class="status-no">❌</span> Basic, Standard & Premium SKUs <strong>not supported</strong> in Extended Zones.<br/>
+<span class="status-complete">✅</span> Deploy in <strong>parent region</strong> with global vNet peering (not Developer SKU).</p>
+</div>
+
+<div class="feature-card mb-2">
+<h4>💡 Azure Advisor</h4>
+<p><span class="status-complete">✅</span> Non-regional service — recommendations apply to Extended Zone resources.</p>
+</div>
+
+<div class="feature-card mb-2">
+<h4>🏷️ Azure Tags</h4>
+<p><span class="status-complete">✅</span> Supported in Extended Zones. Recommended as part of governance strategy.</p>
+</div>
+
+</div>
+
+<div>
+
+<div class="feature-card mb-2">
+<h4>🖼️ Compute Gallery Images</h4>
+<p><span class="status-complete">✅</span> Replicate from parent region via CLI. <span class="status-no">❌</span> Not available via Portal UX.</p>
+</div>
+
+<div class="azure-card mb-2" style="font-size: 0.8em;">
+
+```bash
+az sig image-version update \
+  --resource-group MyRG \
+  --gallery-name MyGallery \
+  --gallery-image-definition MyImage \
+  --gallery-image-version 0.0.1 \
+  --target-edge-zones \
+    australiaeast=perth=1=standardssd_lrs
+```
+
+</div>
+
+<div class="feature-card mb-2">
+<h4>📜 Azure Policy</h4>
+<p><span class="status-complete">✅</span> Non-regional — evaluates Extended Zone resources for policy compliance.</p>
+</div>
+
+</div>
+
+</div>
+
+---
+transition: fade
+---
+
+# Observability
+
+<div class="grid grid-cols-3 gap-3 mt-1" style="font-size: 0.85em;">
+
+<div>
+
+<div class="feature-card mb-2">
+<h4>🔔 Action Groups</h4>
+<p><span class="status-no">❌</span> Cannot create in EZ. Use <strong>global</strong> action groups.</p>
+</div>
+
+<div class="feature-card mb-2">
+<h4>🩺 Service Health</h4>
+<p><span class="status-complete">✅</span> Supported for EZ resources (status, outages, maintenance).</p>
+</div>
+
+<div class="feature-card mb-2">
+<h4>📊 Logs</h4>
+<p><span class="status-no">❌</span> Log Analytics in <strong>parent region</strong> only. Additional bandwidth costs may apply.</p>
+</div>
+
+<div class="feature-card mb-2">
+<h4>📈 Metrics</h4>
+<p><span class="status-complete">✅</span> Azure Monitor Metrics compatible with EZ resources.</p>
+</div>
+
+</div>
+
+<div>
+
+<div class="feature-card mb-2">
+<h4>🔍 Insights & Workbooks</h4>
+<p><span class="status-complete">✅</span> Both supported for EZ resources.</p>
+</div>
+
+<div class="feature-card mb-2">
+<h4>📡 Application Insights</h4>
+<p><span class="status-complete">✅</span> Supported. Workspace in parent region.</p>
+</div>
+
+<div class="feature-card mb-2">
+<h4>🌐 Network Watcher</h4>
+<p><span class="status-complete">✅</span> Auto-created in parent region. Full diagnostics suite available.</p>
+</div>
+
+<div class="feature-card mb-2">
+<h4>🔗 Connection Monitor</h4>
+<p><span class="status-no">❌</span> Cannot create in EZ. Select parent region.</p>
+</div>
+
+</div>
+
+<div>
+
+<div class="feature-card mb-2">
+<h4>🖥️ Boot Diagnostics</h4>
+<p><span class="status-complete">✅</span> Supported. <strong>Managed only</strong> — no custom storage accounts.</p>
+</div>
+
+<div class="feature-card mb-2">
+<h4>📦 Quotas</h4>
+<p>Managed via <strong>parent region</strong>. No EZ-specific monitoring. Request increases via Azure Portal.</p>
+</div>
+
+<div class="feature-card mb-2">
+<h4>🔄 VM Guest Patching</h4>
+<p><span class="status-complete">✅</span> Automatic patching supported in EZ.</p>
+</div>
+
+<div class="feature-card mb-2">
+<h4>🛡️ Update Manager</h4>
+<p><span class="status-complete">✅</span> Unified Windows & Linux update compliance.</p>
+</div>
 
 </div>
 
