@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Microsoft Azure-inspired Slidev theme for Perth Extended Zone",
   "slidev": {
-    "colorSchema": "light",
+    "colorSchema": "both",
     "defaults": {
       "fonts": {
         "sans": "Segoe UI, system-ui, -apple-system, sans-serif",

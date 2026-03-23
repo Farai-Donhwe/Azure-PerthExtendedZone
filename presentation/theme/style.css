@@ -403,3 +403,98 @@
 :root {
   --slidev-controls-foreground: var(--azure-blue);
 }
+
+/* ============================================================
+   Dark Mode
+   ============================================================ */
+html.dark {
+  --azure-blue: #4db8ff;
+  --azure-blue-dark: #6bc5ff;
+  --azure-blue-light: #1a3a5c;
+  --azure-teal: #40d9e2;
+  --azure-navy: #8ab4f8;
+  --azure-gradient: linear-gradient(135deg, #40d9e2, #4db8ff);
+  --azure-gradient-h: linear-gradient(90deg, #40d9e2, #4db8ff);
+
+  --azure-white: #1e1e1e;
+  --azure-gray-100: #2a2a2a;
+  --azure-gray-200: #3a3a3a;
+  --azure-gray-300: #4a4a4a;
+  --azure-gray-500: #a0a0a0;
+  --azure-gray-700: #d0d0d0;
+  --azure-gray-900: #f0f0f0;
+
+  --azure-green: #4caf50;
+  --azure-yellow: #ffd54f;
+  --azure-red: #ef5350;
+  --azure-purple: #b39ddb;
+}
+
+html.dark .slidev-layout {
+  background: #1e1e1e;
+  color: #f0f0f0;
+}
+
+html.dark .slidev-layout table thead th {
+  background: #2a4a7f;
+}
+
+html.dark .slidev-layout table tbody tr:nth-child(even) {
+  background: #2a2a2a;
+}
+
+html.dark .slidev-layout table tbody tr:hover {
+  background: #1a3a5c;
+}
+
+html.dark .slidev-layout table {
+  border-color: #3a3a3a;
+}
+
+html.dark .slidev-layout table tbody td {
+  border-bottom-color: #3a3a3a;
+}
+
+html.dark .slidev-layout code {
+  background: #2a2a2a;
+  color: #6bc5ff;
+}
+
+html.dark .slidev-layout pre {
+  background: #2a2a2a !important;
+  border-color: #3a3a3a;
+}
+
+html.dark .slidev-layout blockquote {
+  background: #1a3a5c;
+  border-left-color: #4db8ff;
+  color: #d0d0d0;
+}
+
+html.dark .feature-card {
+  background: #2a2a2a;
+  border-color: #3a3a3a;
+  border-left-color: #4db8ff;
+}
+
+html.dark .feature-card:hover {
+  box-shadow: 0 4px 12px rgba(77, 184, 255, 0.2);
+}
+
+html.dark .azure-card {
+  background: #2a2a2a;
+  border-color: #3a3a3a;
+}
+
+html.dark .section-banner {
+  background: var(--azure-gradient-h);
+}
+
+html.dark .process-step {
+  background: #2a2a2a;
+  border-top-color: #4db8ff;
+}
+
+html.dark .process-step::after {
+  color: #40d9e2;
+}

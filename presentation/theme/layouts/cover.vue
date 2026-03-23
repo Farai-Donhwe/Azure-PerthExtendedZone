@@ -31,6 +31,14 @@
   position: relative;
 }
 
+html.dark .azure-cover {
+  background: linear-gradient(135deg, #1e1e1e 0%, #1a2a3a 50%, #1a3a5c 100%);
+}
+
+html.dark .ms-logo span {
+  color: #d0d0d0;
+}
+
 .azure-cover::before {
   height: 0;
 }
