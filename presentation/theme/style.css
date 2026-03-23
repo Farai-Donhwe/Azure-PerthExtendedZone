@@ -1,0 +1,405 @@
+/* ============================================================
+   Azure Design System — Slidev Theme
+   Based on Microsoft Azure presentation design language
+   ============================================================ */
+
+:root {
+  /* Azure brand palette */
+  --azure-blue: #0078d4;
+  --azure-blue-dark: #005a9e;
+  --azure-blue-light: #deecf9;
+  --azure-teal: #00b7c3;
+  --azure-navy: #002050;
+  --azure-gradient: linear-gradient(135deg, #00b7c3, #0078d4);
+  --azure-gradient-h: linear-gradient(90deg, #00b7c3, #0078d4);
+
+  /* Neutrals */
+  --azure-white: #ffffff;
+  --azure-gray-100: #f5f5f5;
+  --azure-gray-200: #ebebeb;
+  --azure-gray-300: #d2d2d2;
+  --azure-gray-500: #6e6e6e;
+  --azure-gray-700: #3b3b3b;
+  --azure-gray-900: #1a1a1a;
+
+  /* Status */
+  --azure-green: #107c10;
+  --azure-yellow: #ffb900;
+  --azure-red: #d13438;
+  --azure-purple: #8764b8;
+}
+
+/* ============================================================
+   Base slide styles
+   ============================================================ */
+.slidev-layout {
+  background: var(--azure-white);
+  color: var(--azure-gray-900);
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  padding: 2.5rem 3rem;
+}
+
+/* Subtle decorative accent bar at top of each slide */
+.slidev-layout::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--azure-gradient-h);
+}
+
+/* ============================================================
+   Typography
+   ============================================================ */
+.slidev-layout h1 {
+  color: var(--azure-blue);
+  font-weight: 700;
+  font-size: 2.2em;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin-bottom: 0.5em;
+}
+
+.slidev-layout h2 {
+  color: var(--azure-navy);
+  font-weight: 600;
+  font-size: 1.5em;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.4em;
+}
+
+.slidev-layout h3 {
+  color: var(--azure-blue);
+  font-weight: 600;
+  font-size: 1.15em;
+  margin-bottom: 0.3em;
+}
+
+.slidev-layout h4 {
+  color: var(--azure-gray-700);
+  font-weight: 600;
+  font-size: 1em;
+}
+
+.slidev-layout p,
+.slidev-layout li {
+  color: var(--azure-gray-700);
+  font-size: 0.95em;
+  line-height: 1.65;
+}
+
+.slidev-layout strong {
+  color: var(--azure-gray-900);
+  font-weight: 600;
+}
+
+.slidev-layout a {
+  color: var(--azure-blue);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+.slidev-layout a:hover {
+  border-bottom-color: var(--azure-blue);
+}
+
+/* ============================================================
+   Tables — clean, readable, Azure-style
+   ============================================================ */
+.slidev-layout table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 0.82em;
+  margin-top: 0.5em;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--azure-gray-200);
+}
+
+.slidev-layout table thead th {
+  background: var(--azure-blue);
+  color: white;
+  font-weight: 600;
+  padding: 0.65em 1em;
+  text-align: left;
+  border: none;
+}
+
+.slidev-layout table tbody td {
+  padding: 0.55em 1em;
+  border-bottom: 1px solid var(--azure-gray-200);
+  color: var(--azure-gray-700);
+}
+
+.slidev-layout table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.slidev-layout table tbody tr:nth-child(even) {
+  background: var(--azure-gray-100);
+}
+
+.slidev-layout table tbody tr:hover {
+  background: var(--azure-blue-light);
+}
+
+/* ============================================================
+   Code blocks
+   ============================================================ */
+.slidev-layout code {
+  background: var(--azure-gray-100);
+  color: var(--azure-blue-dark);
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+  font-size: 0.9em;
+  font-family: 'Cascadia Code', Consolas, monospace;
+}
+
+.slidev-layout pre {
+  background: var(--azure-gray-100) !important;
+  border: 1px solid var(--azure-gray-200);
+  border-radius: 8px;
+  padding: 1em;
+}
+
+/* ============================================================
+   Blockquotes — callout style
+   ============================================================ */
+.slidev-layout blockquote {
+  background: var(--azure-blue-light);
+  border-left: 4px solid var(--azure-blue);
+  border-radius: 0 8px 8px 0;
+  padding: 0.8em 1.2em;
+  margin: 0.8em 0;
+  color: var(--azure-gray-700);
+  font-size: 0.9em;
+}
+
+.slidev-layout blockquote p {
+  margin: 0;
+}
+
+/* ============================================================
+   Lists — clean with Azure-colored bullets
+   ============================================================ */
+.slidev-layout ul {
+  padding-left: 1.2em;
+}
+
+.slidev-layout ul li::marker {
+  color: var(--azure-blue);
+}
+
+.slidev-layout ol li::marker {
+  color: var(--azure-blue);
+  font-weight: 600;
+}
+
+/* ============================================================
+   Utility classes for Azure card & badge patterns
+   ============================================================ */
+
+/* Azure card — light gray rounded card like in the images */
+.azure-card {
+  background: var(--azure-gray-100);
+  border-radius: 12px;
+  padding: 1.2em 1.5em;
+  border: 1px solid var(--azure-gray-200);
+}
+
+/* Azure badge — gradient pill label */
+.azure-badge {
+  display: inline-block;
+  background: var(--azure-gradient);
+  color: white;
+  font-weight: 600;
+  font-size: 0.85em;
+  padding: 0.3em 1em;
+  border-radius: 20px;
+}
+
+/* Azure step indicator — numbered circle */
+.azure-step {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2em;
+  height: 2em;
+  background: var(--azure-gradient);
+  color: white;
+  font-weight: 700;
+  border-radius: 50%;
+  font-size: 1em;
+  margin-right: 0.5em;
+  flex-shrink: 0;
+}
+
+/* Azure icon circle — light ring with icon inside */
+.azure-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5em;
+  height: 2.5em;
+  background: var(--azure-blue-light);
+  color: var(--azure-blue);
+  border-radius: 50%;
+  font-size: 1.2em;
+  flex-shrink: 0;
+  border: 2px solid var(--azure-blue);
+}
+
+/* Status chips */
+.status-complete {
+  color: var(--azure-green);
+  font-weight: 600;
+}
+
+.status-progress {
+  color: var(--azure-yellow);
+  font-weight: 600;
+}
+
+.status-roadmap {
+  color: var(--azure-purple);
+  font-weight: 600;
+}
+
+.status-no {
+  color: var(--azure-red);
+  font-weight: 600;
+}
+
+/* Section banner — gradient header strip */
+.section-banner {
+  background: var(--azure-gradient-h);
+  color: white;
+  padding: 0.6em 1.5em;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.95em;
+  text-align: center;
+  margin-bottom: 0.8em;
+}
+
+/* Feature cards grid */
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1em;
+  margin-top: 0.5em;
+}
+
+.feature-card {
+  background: var(--azure-gray-100);
+  border-radius: 12px;
+  padding: 1em 1.2em;
+  border-left: 4px solid var(--azure-blue);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.feature-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 120, 212, 0.15);
+}
+
+.feature-card h4 {
+  color: var(--azure-blue);
+  margin: 0 0 0.3em;
+  font-size: 0.95em;
+}
+
+.feature-card p {
+  margin: 0;
+  font-size: 0.85em;
+  color: var(--azure-gray-500);
+}
+
+/* Process flow — horizontal step cards */
+.process-flow {
+  display: flex;
+  gap: 0.5em;
+  align-items: stretch;
+  margin-top: 0.5em;
+}
+
+.process-step {
+  flex: 1;
+  background: var(--azure-gray-100);
+  border-radius: 12px;
+  padding: 0.8em;
+  text-align: center;
+  position: relative;
+  border-top: 3px solid var(--azure-blue);
+}
+
+.process-step .step-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.8em;
+  height: 1.8em;
+  background: var(--azure-gradient);
+  color: white;
+  font-weight: 700;
+  border-radius: 50%;
+  font-size: 0.85em;
+  margin-bottom: 0.4em;
+}
+
+.process-step h4 {
+  color: var(--azure-blue);
+  font-size: 0.85em;
+  margin: 0.3em 0;
+}
+
+.process-step p {
+  font-size: 0.75em;
+  color: var(--azure-gray-500);
+  margin: 0;
+}
+
+/* Arrow connector between process steps */
+.process-step:not(:last-child)::after {
+  content: '→';
+  position: absolute;
+  right: -0.7em;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--azure-teal);
+  font-size: 1.2em;
+  font-weight: 700;
+  z-index: 1;
+}
+
+/* ============================================================
+   Slide transitions — smooth and professional
+   ============================================================ */
+.slidev-vclick-target {
+  transition: all 0.4s ease;
+}
+
+.slidev-vclick-hidden {
+  opacity: 0;
+  transform: translateY(8px);
+  pointer-events: none;
+}
+
+/* ============================================================
+   Footer / pagination
+   ============================================================ */
+.slidev-layout .slidev-page-number {
+  color: var(--azure-gray-500);
+  font-size: 0.75em;
+}
+
+/* ============================================================
+   Header & footer bar overrides
+   ============================================================ */
+:root {
+  --slidev-controls-foreground: var(--azure-blue);
+}

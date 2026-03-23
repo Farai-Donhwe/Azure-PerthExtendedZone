@@ -1,30 +1,33 @@
 ---
-theme: seriph
-background: https://images.unsplash.com/photo-1609017909889-d7b586137083?w=1920
+theme: ./theme
 title: Perth Extended Zone — Customer Playbook
 info: |
   ## Perth Extended Zone Customer Playbook
   Technical guidance for deploying workloads to the Azure Perth Extended Zone.
-
   Version 1.2 — May 2025
-class: text-center
 drawings:
   persist: false
 transition: slide-left
 mdc: true
 ---
 
+<style>
+/* Per-presentation overrides if needed */
+</style>
+
+---
+layout: cover
+---
+
 # Perth Extended Zone
 
-## Customer Playbook — SpecDev Overview
+## Customer Playbook
 
-**Version 1.2 | May 2025**
+<div class="azure-badge mt-4">Version 1.2 — May 2025</div>
 
-<div class="abs-br m-6 flex gap-2">
-  <a href="https://DonFarCreative.github.io/Perth-Extended-Zone/" target="_blank" class="text-xl slidev-icon-btn opacity-50 !border-none !hover:text-white">
-    📖 Full Playbook
-  </a>
-</div>
+<p class="mt-6" style="color: #6e6e6e; font-size: 0.9em;">
+Accelerate cloud adoption in Western Australia with low-latency, data-resident Azure services.
+</p>
 
 <!--
 Welcome to the Perth Extended Zone SpecDev presentation.
@@ -37,94 +40,156 @@ transition: fade-out
 
 # Agenda
 
-<v-clicks>
+<div class="grid grid-cols-2 gap-x-8 gap-y-2 mt-4">
 
-1. [🌏 What are Azure Extended Zones?](/3)
-2. [📍 Perth Extended Zone Overview](/5)
-3. [🏗️ Deployment Scenarios](/6)
-4. [⚙️ Service Availability](/7)
-5. [🌐 Networking & Connectivity](/10)
-6. [🔄 Business Continuity & DR](/12)
-7. [🔒 Security & Compliance](/13)
-8. [📋 Design Decisions & Recommendations](/14)
-9. [🚀 Next Steps](/16)
+<div v-click class="feature-card">
+<h4>🌏 <a href="/4">What are Azure Extended Zones?</a></h4>
+<p>Small-footprint extensions of Azure regions</p>
+</div>
 
-</v-clicks>
+<div v-click class="feature-card">
+<h4>📍 <a href="/6">Perth Extended Zone Overview</a></h4>
+<p>Why it matters for Western Australia</p>
+</div>
+
+<div v-click class="feature-card">
+<h4>🏗️ <a href="/7">Deployment Scenarios</a></h4>
+<p>Standalone and Extension patterns</p>
+</div>
+
+<div v-click class="feature-card">
+<h4>⚙️ <a href="/8">Service Availability</a></h4>
+<p>Available services, SLAs, and ISVs</p>
+</div>
+
+<div v-click class="feature-card">
+<h4>🌐 <a href="/11">Networking & Connectivity</a></h4>
+<p>Topologies, ExpressRoute, internet access</p>
+</div>
+
+<div v-click class="feature-card">
+<h4>🔄 <a href="/13">Business Continuity & DR</a></h4>
+<p>Availability, backup, and recovery</p>
+</div>
+
+<div v-click class="feature-card">
+<h4>🔒 <a href="/14">Security & Compliance</a></h4>
+<p>Security services and data residency</p>
+</div>
+
+<div v-click class="feature-card">
+<h4>📋 <a href="/15">Design Decisions</a></h4>
+<p>Key recommendations and pricing</p>
+</div>
+
+</div>
 
 ---
-transition: slide-up
-layout: two-cols
-layoutClass: gap-16
+layout: section
 ---
 
 # What are Azure Extended Zones?
 
+## Small-footprint extensions of Azure — close to your users
+
+---
+layout: two-cols
+transition: slide-up
+---
+
+# Azure Extended Zones
+
 <v-clicks>
 
-- **Small-footprint extensions** of an Azure region
-- Located in metropolitan areas & industry hubs
-- Support VMs, containers, storage, select services
-- **Control plane** → parent region
-- **Data plane** → Extended Zone site
-- Integrated into **Microsoft global network**
+<div class="feature-card mb-3">
+<h4>☁️ Small-Footprint Extensions</h4>
+<p>Strategically located in metropolitan areas, industry hubs, or specific jurisdictions</p>
+</div>
+
+<div class="feature-card mb-3">
+<h4>🏗️ Architecture</h4>
+<p><strong>Control plane</strong> remains in parent region · <strong>Data plane</strong> deployed at Extended Zone site</p>
+</div>
+
+<div class="feature-card mb-3">
+<h4>🌐 Global Network</h4>
+<p>Integrated into Microsoft's global network for secure, reliable, high-bandwidth connectivity</p>
+</div>
 
 </v-clicks>
 
 ::right::
 
-<div v-click class="mt-12">
+<div v-click class="mt-6">
 
-## Two Key Scenarios
+### Two Key Scenarios
 
-| Scenario | Description |
-|:---------|:------------|
-| **Latency** | Run resources close to end users |
-| **Data Residency** | Keep data within a specific geography |
+<div class="feature-card mb-3" style="border-left-color: #00b7c3;">
+<h4>⚡ Latency</h4>
+<p>Run resources close to end users with minimal latency</p>
+</div>
+
+<div class="feature-card" style="border-left-color: #8764b8;">
+<h4>📍 Data Residency</h4>
+<p>Keep application data within a specific geography for privacy, regulatory, and compliance reasons</p>
+</div>
+
+<div class="section-banner mt-4">
+Supports VMs · Containers · Storage · Select Azure Services
+</div>
 
 </div>
 
 ---
-layout: center
-class: text-center
+layout: section
 ---
 
 # Perth Extended Zone
 
-## Why It Matters
+## Why It Matters for Western Australia
 
----
-transition: slide-left
 ---
 
 # Perth Extended Zone — Why It Matters
 
-<div class="grid grid-cols-2 gap-8">
+<div class="grid grid-cols-2 gap-8 mt-2">
 
-<div v-click>
+<div>
 
-### 🎯 Key Benefits
+<div v-click class="feature-card mb-3">
+<h4>🏛️ Data Residency</h4>
+<p>Fulfil data residency and compliance obligations by storing and processing data <strong>within Western Australia</strong></p>
+</div>
 
-- Fulfil **data residency** and compliance obligations
-- Minimise **workload latency** for Perth-based users
-- Achieve **sustainability goals**
+<div v-click class="feature-card mb-3">
+<h4>⚡ Low Latency</h4>
+<p>Minimise workload latency for <strong>Perth-based users</strong> and applications</p>
+</div>
+
+<div v-click class="feature-card mb-3">
+<h4>🌱 Sustainability</h4>
+<p>Achieve sustainability goals with local infrastructure</p>
+</div>
 
 </div>
 
-<div v-click>
+<div>
+
+<div v-click class="azure-card mt-2">
 
 ### 📍 Key Facts
 
-- **Parent Region:** Australia East (Sydney)
-- **Single-zone location**
-- **Compliance:** ISO 27001 · SOC 2 Type II · PCI DSS
+| Detail | Value |
+|:-------|:------|
+| **Parent Region** | Australia East (Sydney) |
+| **Zone Type** | Single-zone location |
+| **ISO 27001** | <span class="status-complete">✅ Compliant</span> |
+| **SOC 2 Type II** | <span class="status-complete">✅ Compliant</span> |
+| **PCI DSS** | <span class="status-complete">✅ Compliant</span> |
 
 </div>
 
 </div>
-
-<div v-click class="mt-8 p-4 bg-blue-500/10 rounded-lg">
-
-> 💡 Store and process data **within Western Australia** — fulfilling data residency obligations while leveraging Azure's global platform.
 
 </div>
 
@@ -134,42 +199,51 @@ transition: slide-up
 
 # Deployment Scenarios
 
-<div class="grid grid-cols-2 gap-12">
+<div class="grid grid-cols-2 gap-8 mt-2">
 
 <div v-click>
 
-## Scenario 1: Standalone
+<div class="section-banner">Scenario 1: Standalone</div>
+
+<div class="azure-card">
 
 Deploy workloads **without connecting** to a parent region landing zone.
 
-```mermaid {scale: 0.7}
+```mermaid {scale: 0.6, theme: 'neutral'}
 graph TD
-    A[On-Premises Perth] -->|ExpressRoute| B[Perth Extended Zone]
-    C[Internet] -->|Standard LB| B
+    A[🏢 On-Premises Perth] -->|ExpressRoute| B[☁️ Perth Extended Zone]
+    C[🌐 Internet] -->|Standard LB| B
+    style B fill:#deecf9,stroke:#0078d4,stroke-width:2px
+    style A fill:#f5f5f5,stroke:#6e6e6e
+    style C fill:#f5f5f5,stroke:#6e6e6e
 ```
+
+</div>
 
 </div>
 
 <div v-click>
 
-## Scenario 2: Extension
+<div class="section-banner">Scenario 2: Extension</div>
 
-**Extend an existing landing zone** to include the Perth Extended Zone.
+<div class="azure-card">
 
-```mermaid {scale: 0.7}
+**Extend an existing landing zone** via vNet peering over the Microsoft backbone.
+
+```mermaid {scale: 0.6, theme: 'neutral'}
 graph TD
-    A[On-Premises] -->|ExpressRoute| B[Perth Extended Zone]
-    B -->|vNet Peering| C[Australia East]
-    D[Internet] -->|Standard LB| B
+    A[🏢 On-Premises] -->|ExpressRoute| B[☁️ Perth Extended Zone]
+    B -->|vNet Peering| C[☁️ Australia East]
+    D[🌐 Internet] -->|Standard LB| B
+    style B fill:#deecf9,stroke:#0078d4,stroke-width:2px
+    style C fill:#e8f4e8,stroke:#107c10,stroke-width:2px
+    style A fill:#f5f5f5,stroke:#6e6e6e
+    style D fill:#f5f5f5,stroke:#6e6e6e
 ```
 
 </div>
 
 </div>
-
-<div v-click class="mt-4 text-sm opacity-75">
-
-**Connectivity Options:** ExpressRoute (NextDC P1) · Site-to-Site VPN (ISV) · Standard Load Balancer
 
 </div>
 
@@ -179,25 +253,37 @@ transition: fade
 
 # Service Availability
 
-<div class="overflow-auto">
+<div class="mt-2">
 
-| Category | Services |
-|:---------|:---------|
-| **Compute** | AKS, AVD, VMSS, VMs (A/B/D/E/F + GPU NVadsA10 v5) |
-| **Networking** | ExpressRoute, DDoS, Private Link, Standard LB, vNet, vNet Peering |
-| **Storage** | Managed Disks, Premium Blobs/Files, ADLS Gen2, SFTP, NFS |
-| **BCDR** | Azure Site Recovery, Azure Backup |
-| **Arc-enabled** | PostgreSQL, Managed SQL, Container Apps (Preview) |
+| Category | Available Services | Status |
+|:---------|:-------------------|:-------|
+| **Compute** | AKS, AVD, VMSS, VMs (A/B/D/E/F + GPU NVadsA10 v5) | <span class="status-complete">✅ GA</span> |
+| **Networking** | ExpressRoute, DDoS, Private Link, Standard LB, vNet, vNet Peering | <span class="status-complete">✅ GA</span> |
+| **Storage** | Managed Disks, Premium Blobs/Files, ADLS Gen2, SFTP, NFS | <span class="status-complete">✅ GA</span> |
+| **BCDR** | Azure Site Recovery, Azure Backup | <span class="status-complete">✅ GA</span> |
+| **Arc-enabled** | PostgreSQL, Managed SQL, Container Apps | <span class="status-progress">🔄 Preview</span> |
 
 </div>
 
 <v-click>
 
-<div class="mt-6 p-3 bg-purple-500/10 rounded-lg">
+<div class="mt-4">
+<div class="section-banner">🔮 Roadmap (Post-GA)</div>
 
-### 🔮 Roadmap (Post-GA)
-Application Gateway · VPN Gateway · NAT Gateway · Azure Firewall
-
+<div class="process-flow mt-2">
+<div class="process-step">
+<h4>Application Gateway</h4>
+</div>
+<div class="process-step">
+<h4>VPN Gateway</h4>
+</div>
+<div class="process-step">
+<h4>NAT Gateway</h4>
+</div>
+<div class="process-step">
+<h4>Azure Firewall</h4>
+</div>
+</div>
 </div>
 
 </v-click>
@@ -206,79 +292,116 @@ Application Gateway · VPN Gateway · NAT Gateway · Azure Firewall
 transition: slide-left
 ---
 
-# SLA Summary
+# SLA & ISV Solutions
+
+<div class="grid grid-cols-2 gap-8 mt-2">
 
 <div v-click>
 
-| Area | Service | Uptime SLA | Service Credit |
-|:-----|:--------|:-----------|:---------------|
-| **Compute** | VM / VMSS | < 99.9% | 10% |
-| **Storage** | Premium Files / Blobs | Per SLA page | — |
-| **Networking** | Network Availability | Per SLA page | — |
+### Service Level Agreements
+
+<div class="azure-card">
+
+| Area | Service | SLA |
+|:-----|:--------|:----|
+| **Compute** | VM / VMSS | 99.9% |
+| **Storage** | Premium Files/Blobs | Per SLA |
+| **Network** | Availability | Per SLA |
+
+<p style="font-size: 0.75em; color: #6e6e6e; margin-top: 0.5em;">
+⚠️ Single-zone location — SLAs reflect this.
+</p>
 
 </div>
 
-<v-click>
+</div>
 
-<div class="mt-8 p-4 bg-yellow-500/10 rounded-lg">
+<div v-click>
 
-⚠️ Extended Zones are **single-zone locations** — SLAs reflect this constraint. For details, refer to the [Microsoft SLA page](https://www.microsoft.com/licensing/docs/view/Service-Level-Agreements-SLA-for-Online-Services).
+### ISV Validation
+
+<div class="azure-card">
+
+| Vendor | Status |
+|:-------|:-------|
+| **Aviatrix** | <span class="status-complete">✅ Complete</span> |
+| **Fortinet** | <span class="status-complete">✅ Complete</span> |
+| **Checkpoint** | <span class="status-progress">🔄 Validating</span> |
+| **Citrix** | <span class="status-progress">🔄 Validating</span> |
+| **F5 Network** | <span class="status-progress">🔄 Validating</span> |
+| **Palo Alto** | <span class="status-progress">🔄 Validating</span> |
+| **Red Hat** | <span class="status-progress">🔄 Validating</span> |
 
 </div>
 
-</v-click>
+</div>
+
+</div>
 
 ---
-transition: slide-up
+layout: section
 ---
 
-# ISV Solutions
+# Networking & Connectivity
 
-| Vendor | Product | Status |
-|:-------|:--------|:-------|
-| **Aviatrix** | Secure Networking Platform | <span class="text-green-400">✅ Completed</span> |
-| **Fortinet** | FortiGate NGFW | <span class="text-green-400">✅ Completed</span> |
-| **Checkpoint** | CloudGuard Network Security | <span class="text-yellow-400">🔄 Validating</span> |
-| **Citrix** | DaaS | <span class="text-yellow-400">🔄 Validating</span> |
-| **F5 Network** | Big IP BYOL | <span class="text-yellow-400">🔄 Validating</span> |
-| **Palo Alto** | VM-Series NGFW | <span class="text-yellow-400">🔄 Validating</span> |
-| **Red Hat** | RHEL | <span class="text-yellow-400">🔄 Validating</span> |
+## Topologies, ExpressRoute, and Internet Access
 
 ---
-transition: slide-left
 layout: two-cols
-layoutClass: gap-16
+transition: slide-left
 ---
 
-# Networking — Topology
+# Network Topology
 
 <v-clicks>
 
-### Standalone
-- Traditional Hub-and-Spoke ✅
-- Single vNet ✅
-- Virtual WAN Hub ❌
+<div class="feature-card mb-3">
+<h4>Standalone — Traditional</h4>
+<p>Hub-and-Spoke or single vNet <span class="status-complete">✅</span></p>
+</div>
 
-### Extension
-- Traditional + **vNet peering** to parent ✅
-- vNet peering to parent **Virtual WAN** ✅
+<div class="feature-card mb-3">
+<h4>Standalone — Virtual WAN</h4>
+<p>vWAN Hub not supported <span class="status-no">❌</span></p>
+</div>
+
+<div class="feature-card mb-3">
+<h4>Extension — Traditional</h4>
+<p>vNet peering to parent region <span class="status-complete">✅</span></p>
+</div>
+
+<div class="feature-card mb-3">
+<h4>Extension — Hybrid vWAN</h4>
+<p>vNet peering to parent vWAN <span class="status-complete">✅</span></p>
+</div>
 
 </v-clicks>
 
 ::right::
 
-<div v-click>
+<div v-click class="mt-2">
 
-### ExpressRoute (Preferred)
+### ExpressRoute Details
+
+<div class="azure-card">
 
 | Detail | Value |
 |:-------|:------|
-| **Peering** | NextDC P1 |
+| **Peering Location** | NextDC P1 |
 | **Partners** | Equinix, Megaport, NextDC |
-| **Standard** | Oceania region |
-| **Premium** | Global connectivity |
-| **Local** | ❌ Not supported |
+| **Direct** | ExpressRoute Direct |
+| **Standard SKU** | Oceania region |
+| **Premium SKU** | Global connectivity |
+| **Local SKU** | <span class="status-no">❌ Not supported</span> |
 | **SLA** | 99.95% uptime |
+
+</div>
+
+<div class="mt-3" style="font-size: 0.8em;">
+
+> 💡 **DR tip:** Deploy a second circuit to parent region PoP (e.g., Sydney) or use site-to-site VPN as fallback.
+
+</div>
 
 </div>
 
@@ -286,46 +409,60 @@ layoutClass: gap-16
 transition: fade
 ---
 
-# Outbound & Inbound Internet
+# Internet Access
 
-<div class="grid grid-cols-2 gap-8">
-
-<div>
-
-### ⬆️ Outbound Internet
-
-<v-clicks>
-
-- ❌ **No default outbound route**
-- ✅ Network Virtual Appliance
-- ✅ Load Balancer (SNAT)
-- ✅ Instance-Level Public IP
-- 🔮 Azure Firewall *(roadmap)*
-- 🔮 NAT Gateway *(roadmap)*
-
-</v-clicks>
-
-</div>
+<div class="grid grid-cols-2 gap-8 mt-2">
 
 <div>
 
-### ⬇️ Inbound Internet
+### ⬆️ Outbound Options
 
-<v-clicks>
+<div v-click class="feature-card mb-2">
+<h4>Network Virtual Appliance</h4>
+<p>ISV NVAs (F5, Palo Alto, Cisco) <span class="status-complete">✅</span></p>
+</div>
 
-- ✅ Standard Load Balancer *(Standard SKU, Regional tier only)*
-- ✅ Network Virtual Appliance
-- 🔮 Application Gateway *(roadmap)*
+<div v-click class="feature-card mb-2">
+<h4>Load Balancer (SNAT)</h4>
+<p>Standard LB with public IP <span class="status-complete">✅</span></p>
+</div>
 
-</v-clicks>
+<div v-click class="feature-card mb-2">
+<h4>Instance-Level Public IP</h4>
+<p>Direct VM internet access <span class="status-complete">✅</span></p>
+</div>
 
+<div v-click class="feature-card mb-2" style="border-left-color: #8764b8;">
+<h4>Azure Firewall & NAT GW</h4>
+<p>On the roadmap <span class="status-roadmap">🔮</span></p>
 </div>
 
 </div>
 
-<div v-click class="mt-6 p-3 bg-red-500/10 rounded-lg text-sm">
+<div>
 
-⚠️ The default outbound route is being phased out across all Azure regions by September 2025. Azure Extended Zones launch without it.
+### ⬇️ Inbound Options
+
+<div v-click class="feature-card mb-2">
+<h4>Azure Standard Load Balancer</h4>
+<p>Standard SKU, Regional tier only <span class="status-complete">✅</span></p>
+</div>
+
+<div v-click class="feature-card mb-2">
+<h4>Network Virtual Appliance</h4>
+<p>ISV ingress inspection <span class="status-complete">✅</span></p>
+</div>
+
+<div v-click class="feature-card mb-2" style="border-left-color: #8764b8;">
+<h4>Application Gateway</h4>
+<p>On the roadmap <span class="status-roadmap">🔮</span></p>
+</div>
+
+<blockquote v-click style="font-size: 0.8em; margin-top: 0.5em;">
+⚠️ <strong>No default outbound route</strong> — phased out across all Azure regions by Sept 2025.
+</blockquote>
+
+</div>
 
 </div>
 
@@ -335,83 +472,133 @@ transition: slide-up
 
 # Business Continuity & DR
 
-<div class="grid grid-cols-2 gap-8">
+<div class="grid grid-cols-3 gap-4 mt-2">
 
 <div v-click>
+<div class="section-banner">Availability</div>
+<div class="azure-card">
 
-### Availability
+<div class="feature-card mb-2">
+<h4>VMSS</h4>
+<p>Compute resilience <span class="status-complete">✅</span></p>
+</div>
 
-- ❌ Availability Sets — **not supported**
-- ✅ **VMSS** — compute resilience
-- ✅ **Load Balancer** — fault tolerance
-- ✅ **LRS** — 3x replication within zone
+<div class="feature-card mb-2">
+<h4>Load Balancer</h4>
+<p>Fault tolerance <span class="status-complete">✅</span></p>
+</div>
 
+<div class="feature-card mb-2">
+<h4>LRS Storage</h4>
+<p>3x replication in zone <span class="status-complete">✅</span></p>
+</div>
+
+<div class="feature-card" style="border-left-color: #d13438;">
+<h4>Availability Sets</h4>
+<p>Not supported <span class="status-no">❌</span></p>
+</div>
+
+</div>
 </div>
 
 <div v-click>
-
-### Recovery
+<div class="section-banner">Recovery</div>
+<div class="azure-card">
 
 | Scenario | Backup | ASR |
 |:---------|:-------|:----|
-| EZ → Parent Region | ✅ | ✅ |
+| EZ → Parent | ✅ | ✅ |
 | On-prem → EZ | ❌ | ❌ |
 | EZ → EZ | — | ❌ |
 
+<p style="font-size: 0.75em; color: #6e6e6e; margin-top: 0.5em;">
+Recovery Vaults: parent region only
+</p>
+
+</div>
+</div>
+
+<div v-click>
+<div class="section-banner">Migration</div>
+<div class="azure-card">
+
+<div class="feature-card" style="border-left-color: #8764b8;">
+<h4>Azure Migrate</h4>
+<p>Not supported for Extended Zones <span class="status-roadmap">🔮</span></p>
+</div>
+
+<p style="font-size: 0.8em; color: #6e6e6e; margin-top: 1em;">
+Consult your Microsoft account team for migration guidance.
+</p>
+
+</div>
 </div>
 
 </div>
-
-<v-click>
-
-<div class="mt-6 p-3 bg-yellow-500/10 rounded-lg">
-
-⚠️ Recovery Services Vaults must be created in an **Azure Region**, not within Extended Zones. Azure Migrate is **not supported** for Extended Zones.
-
-</div>
-
-</v-click>
 
 ---
 transition: slide-left
+layout: two-cols
 ---
 
 # Security & Compliance
 
-<div class="grid grid-cols-2 gap-8">
+<v-clicks>
 
-<div v-click>
-
-### 🛡️ Security Services
-
-- **NSGs** — auto-created in parent region
-- **Private Link** — private endpoint access
-- **DDoS Protection** — plan in parent region
-- **Defender for Cloud** — CSPM recommended
-- **Microsoft Sentinel** — SIEM/SOAR
-
+<div class="feature-card mb-2">
+<h4>🛡️ Network Security Groups</h4>
+<p>Auto-created in parent region</p>
 </div>
 
-<div v-click>
+<div class="feature-card mb-2">
+<h4>🔗 Azure Private Link</h4>
+<p>Private endpoint access to PaaS</p>
+</div>
 
-### 📋 Compliance
+<div class="feature-card mb-2">
+<h4>🛑 DDoS Protection</h4>
+<p>Plan in parent region, protects EZ</p>
+</div>
+
+<div class="feature-card mb-2">
+<h4>🔍 Defender for Cloud</h4>
+<p>CSPM recommended</p>
+</div>
+
+<div class="feature-card mb-2">
+<h4>📡 Microsoft Sentinel</h4>
+<p>SIEM & SOAR</p>
+</div>
+
+</v-clicks>
+
+::right::
+
+<div v-click class="mt-2">
+
+### Compliance Standards
+
+<div class="azure-card mb-4">
 
 | Standard | Status |
 |:---------|:-------|
-| ISO 27001 | ✅ |
-| SOC 2 Type II | ✅ |
-| PCI DSS | ✅ |
-
-### 📍 Data Residency
-Data processed within **Western Australia**
+| **ISO 27001** | <span class="status-complete">✅ Compliant</span> |
+| **SOC 2 Type II** | <span class="status-complete">✅ Compliant</span> |
+| **PCI DSS** | <span class="status-complete">✅ Compliant</span> |
 
 </div>
 
+### Data Residency
+
+<div class="azure-card">
+
+Data processed **within Western Australia**.
+
+<p style="font-size: 0.8em; color: #6e6e6e; margin-top: 0.5em;">
+Some limited scenarios may store data outside selected geography.
+</p>
+
 </div>
-
-<div v-click class="mt-4 text-sm opacity-75">
-
-> Some limited scenarios may store data outside your selected geography. Consult the Azure Data Residency documentation.
 
 </div>
 
@@ -421,7 +608,7 @@ transition: fade
 
 # Key Design Decisions
 
-<div class="overflow-auto text-sm">
+<div class="mt-2">
 
 | Decision | Recommendation |
 |:---------|:---------------|
@@ -432,71 +619,114 @@ transition: fade
 | **Action Groups** | Create global action groups |
 | **Quotas** | Managed via parent region |
 | **Boot Diagnostics** | Managed only (no custom storage accounts) |
-| **DNS** | Customer-managed DNS server (Private DNS Resolver not supported) |
+| **DNS** | Customer-managed DNS (Private DNS Resolver ❌) |
 
 </div>
+
+<v-click>
+
+<blockquote class="mt-4">
+💡 Resource groups <strong>cannot be created</strong> within an Extended Zone — establish them in the parent region with a naming convention that clearly identifies Extended Zone resources.
+</blockquote>
+
+</v-click>
 
 ---
 transition: slide-up
 ---
 
-# Pricing Highlights
+# Pricing & Billing
 
-<v-clicks>
+<div class="grid grid-cols-2 gap-8 mt-2">
 
-- 💰 Priced **separately** from Azure Regions at a **premium**
-- ✅ **EA discounts** apply · **CSP agreements** supported
-- ❌ **Reserved Instances / Savings Plans** — not currently supported
-- 🔄 **Network transfers** — categorised as Inter-Region
-- 🌐 **ExpressRoute** — Zone 2 pricing
-- 🤝 **vNet Peering** (Perth ↔ Australia East) — treated as **same region**
+<div>
 
-</v-clicks>
+<div v-click class="feature-card mb-2">
+<h4>💰 Premium Pricing</h4>
+<p>Priced separately from Azure Regions at a premium</p>
+</div>
 
-<div v-click class="mt-8 p-4 bg-blue-500/10 rounded-lg">
+<div v-click class="feature-card mb-2">
+<h4>✅ EA & CSP</h4>
+<p>Enterprise Agreement discounts and CSP agreements apply</p>
+</div>
 
-> 📞 Contact your Microsoft account team for detailed pricing.
+<div v-click class="feature-card mb-2" style="border-left-color: #d13438;">
+<h4>❌ Savings Plans</h4>
+<p>Reserved Instances and Cost Savings Plans not currently supported</p>
+</div>
+
+</div>
+
+<div>
+
+<div v-click class="azure-card">
+
+### Network Pricing
+
+| Transfer Type | Classification |
+|:-------------|:---------------|
+| **Data Centre** | Inter-Region |
+| **ExpressRoute** | Zone 2 |
+| **vNet Peering** (Perth ↔ AE) | Same region |
+
+</div>
+
+<div v-click class="mt-3">
+
+> 📞 Contact your **Microsoft account team** for detailed pricing information.
+
+</div>
+
+</div>
 
 </div>
 
 ---
 layout: center
-class: text-center
 transition: fade
 ---
 
 # Next Steps
 
-<v-clicks>
-
-1. 📝 **Register subscriptions** for Extended Zone access
-2. 📞 **Engage your Microsoft account team** for pricing and timelines
-3. ⚙️ **Assess service requirements** against availability
-4. 🌐 **Plan network topology** — Standalone or Extension
-5. 🔄 **Design BCDR strategy** around supported scenarios
-6. 📖 **Review the full playbook** on GitHub Pages
-
-</v-clicks>
+<div class="process-flow mt-8">
+<div class="process-step" v-click>
+<div class="step-num">1</div>
+<h4>Register</h4>
+<p>Register subscriptions for Extended Zone access</p>
+</div>
+<div class="process-step" v-click>
+<div class="step-num">2</div>
+<h4>Engage</h4>
+<p>Contact Microsoft account team for pricing & timelines</p>
+</div>
+<div class="process-step" v-click>
+<div class="step-num">3</div>
+<h4>Assess</h4>
+<p>Evaluate service requirements against availability</p>
+</div>
+<div class="process-step" v-click>
+<div class="step-num">4</div>
+<h4>Design</h4>
+<p>Plan network topology & BCDR strategy</p>
+</div>
+<div class="process-step" v-click>
+<div class="step-num">5</div>
+<h4>Deploy</h4>
+<p>Deploy workloads to the Perth Extended Zone</p>
+</div>
+</div>
 
 ---
-layout: center
-class: text-center
+layout: end
 ---
 
 # Thank You
 
-**Perth Extended Zone Customer Playbook**
+## Perth Extended Zone Customer Playbook
 
 Version 1.2 — May 2025
 
-<div class="mt-8">
-
 [📖 Full Playbook](https://DonFarCreative.github.io/Perth-Extended-Zone/) · [💻 GitHub Repo](https://github.com/DonFarCreative/Perth-Extended-Zone)
 
-</div>
-
-<div class="mt-12 text-sm opacity-50">
-
 © Microsoft Corporation. All rights reserved.
-
-</div>

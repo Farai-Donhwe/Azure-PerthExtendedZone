@@ -1,0 +1,15 @@
+{
+  "name": "slidev-theme-azure",
+  "version": "1.0.0",
+  "description": "Microsoft Azure-inspired Slidev theme for Perth Extended Zone",
+  "slidev": {
+    "colorSchema": "light",
+    "defaults": {
+      "fonts": {
+        "sans": "Segoe UI, system-ui, -apple-system, sans-serif",
+        "mono": "Cascadia Code, Consolas, monospace"
+      },
+      "hightlightTheme": "github-light"
+    }
+  }
+}
