@@ -204,18 +204,23 @@ transition: slide-up
 
 <div class="section-banner">Scenario 1: Standalone</div>
 
-<div class="azure-card">
+<div class="azure-card" style="padding: 1em;">
 
 Deploy workloads **without connecting** to a parent region landing zone.
 
-```mermaid {scale: 0.6, theme: 'neutral'}
-graph TD
-    A[🏢 On-Premises Perth] -->|ExpressRoute| B[☁️ Perth Extended Zone]
-    C[🌐 Internet] -->|Standard LB| B
-    style B fill:#deecf9,stroke:#0078d4,stroke-width:2px
-    style A fill:#f5f5f5,stroke:#6e6e6e
-    style C fill:#f5f5f5,stroke:#6e6e6e
-```
+<div class="flow-diagram">
+  <div class="flow-node flow-onprem">🏢 On-Premises Perth</div>
+  <div class="flow-arrow flow-arrow-down">
+    <div class="arrow-line"><div class="arrow-pulse"></div></div>
+    <span class="arrow-label">ExpressRoute</span>
+  </div>
+  <div class="flow-node flow-azure">☁️ Perth Extended Zone</div>
+  <div class="flow-arrow flow-arrow-up">
+    <div class="arrow-line"><div class="arrow-pulse arrow-pulse-up"></div></div>
+    <span class="arrow-label">Standard LB</span>
+  </div>
+  <div class="flow-node flow-onprem">🌐 Internet</div>
+</div>
 
 </div>
 
@@ -225,26 +230,168 @@ graph TD
 
 <div class="section-banner">Scenario 2: Extension</div>
 
-<div class="azure-card">
+<div class="azure-card" style="padding: 1em;">
 
 **Extend an existing landing zone** via vNet peering over the Microsoft backbone.
 
-```mermaid {scale: 0.6, theme: 'neutral'}
-graph TD
-    A[🏢 On-Premises] -->|ExpressRoute| B[☁️ Perth Extended Zone]
-    B -->|vNet Peering| C[☁️ Australia East]
-    D[🌐 Internet] -->|Standard LB| B
-    style B fill:#deecf9,stroke:#0078d4,stroke-width:2px
-    style C fill:#e8f4e8,stroke:#107c10,stroke-width:2px
-    style A fill:#f5f5f5,stroke:#6e6e6e
-    style D fill:#f5f5f5,stroke:#6e6e6e
-```
-
+<div class="flow-diagram">
+  <div class="flow-node flow-onprem">🏢 On-Premises</div>
+  <div class="flow-arrow flow-arrow-down">
+    <div class="arrow-line"><div class="arrow-pulse"></div></div>
+    <span class="arrow-label">ExpressRoute</span>
+  </div>
+  <div class="flow-node flow-azure">☁️ Perth Extended Zone</div>
+  <div class="flow-branch">
+    <div class="flow-arrow flow-arrow-right">
+      <div class="arrow-line-h"><div class="arrow-pulse-h"></div></div>
+      <span class="arrow-label">vNet Peering</span>
+    </div>
+    <div class="flow-node flow-azure-east">☁️ Australia East</div>
+  </div>
+  <div class="flow-arrow flow-arrow-up">
+    <div class="arrow-line"><div class="arrow-pulse arrow-pulse-up"></div></div>
+    <span class="arrow-label">Standard LB</span>
+  </div>
+  <div class="flow-node flow-onprem">🌐 Internet</div>
 </div>
 
 </div>
 
 </div>
+
+</div>
+
+<style>
+.flow-diagram {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  margin-top: 0.6em;
+  font-size: 0.75em;
+}
+.flow-node {
+  padding: 0.5em 1.2em;
+  border-radius: 8px;
+  font-weight: 600;
+  text-align: center;
+  min-width: 160px;
+  z-index: 2;
+}
+.flow-onprem {
+  background: var(--azure-gray-100, #f5f5f5);
+  border: 2px solid var(--azure-gray-300, #d2d2d2);
+  color: var(--azure-gray-700, #3b3b3b);
+}
+.flow-azure {
+  background: var(--azure-blue-light, #deecf9);
+  border: 2px solid var(--azure-blue, #0078d4);
+  color: var(--azure-blue-dark, #005a9e);
+}
+.flow-azure-east {
+  background: #e8f4e8;
+  border: 2px solid #107c10;
+  color: #0b5e0b;
+}
+.flow-arrow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  height: 36px;
+  width: 4px;
+}
+.arrow-line {
+  width: 3px;
+  height: 100%;
+  background: var(--azure-blue, #0078d4);
+  border-radius: 2px;
+  position: relative;
+  overflow: hidden;
+}
+.arrow-pulse {
+  position: absolute;
+  top: -8px;
+  left: -2px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--azure-teal, #00b7c3);
+  box-shadow: 0 0 6px var(--azure-teal, #00b7c3);
+  animation: flowDown 1.5s ease-in-out infinite;
+}
+.arrow-pulse-up {
+  animation: flowUp 1.5s ease-in-out infinite;
+}
+@keyframes flowDown {
+  0% { top: -8px; opacity: 0; }
+  20% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { top: 36px; opacity: 0; }
+}
+@keyframes flowUp {
+  0% { top: 36px; opacity: 0; }
+  20% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { top: -8px; opacity: 0; }
+}
+.arrow-label {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.8em;
+  color: var(--azure-gray-500, #6e6e6e);
+  white-space: nowrap;
+  font-weight: 500;
+}
+.flow-branch {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin: 0.2em 0;
+}
+.flow-arrow-right {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 60px;
+  height: 4px;
+  flex-direction: row;
+}
+.arrow-line-h {
+  height: 3px;
+  width: 100%;
+  background: var(--azure-blue, #0078d4);
+  border-radius: 2px;
+  position: relative;
+  overflow: hidden;
+}
+.arrow-pulse-h {
+  position: absolute;
+  left: -8px;
+  top: -2px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--azure-teal, #00b7c3);
+  box-shadow: 0 0 6px var(--azure-teal, #00b7c3);
+  animation: flowRight 1.5s ease-in-out infinite;
+}
+@keyframes flowRight {
+  0% { left: -8px; opacity: 0; }
+  20% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { left: 60px; opacity: 0; }
+}
+.flow-arrow-right .arrow-label {
+  left: auto;
+  top: -16px;
+  transform: none;
+  left: 50%;
+  transform: translateX(-50%);
+}
+</style>
 
 ---
 transition: fade
