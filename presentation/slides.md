@@ -10,6 +10,7 @@ drawings:
   persist: false
 transition: slide-left
 mdc: true
+favicon: /favicon.svg
 ---
 
 # Perth Extended Zone

@@ -36,7 +36,7 @@
   background: var(--azure-white);
   color: var(--azure-gray-900);
   font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-  padding: 2.5rem 3rem;
+  padding: 2.5rem 3rem 2.5rem 3.5rem;
 }
 
 /* Subtle decorative accent bar at top of each slide */
