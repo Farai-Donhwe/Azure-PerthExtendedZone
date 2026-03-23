@@ -39,15 +39,15 @@ transition: fade-out
 
 <v-clicks>
 
-1. 🌏 What are Azure Extended Zones?
-2. 📍 Perth Extended Zone Overview
-3. 🏗️ Deployment Scenarios
-4. ⚙️ Service Availability
-5. 🌐 Networking & Connectivity
-6. 🔄 Business Continuity & DR
-7. 🔒 Security & Compliance
-8. 📋 Design Decisions & Recommendations
-9. 🚀 Next Steps
+1. [🌏 What are Azure Extended Zones?](/3)
+2. [📍 Perth Extended Zone Overview](/5)
+3. [🏗️ Deployment Scenarios](/6)
+4. [⚙️ Service Availability](/7)
+5. [🌐 Networking & Connectivity](/10)
+6. [🔄 Business Continuity & DR](/12)
+7. [🔒 Security & Compliance](/13)
+8. [📋 Design Decisions & Recommendations](/14)
+9. [🚀 Next Steps](/16)
 
 </v-clicks>
 
