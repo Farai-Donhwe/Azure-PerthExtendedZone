@@ -1,73 +1,67 @@
 <template>
-<svg :viewBox="'0 0 ' + w + ' ' + h" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;">
-  <defs>
-    <linearGradient id="ov-g" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#00b7c3"/><stop offset="100%" stop-color="#0078d4"/></linearGradient>
-    <marker id="ov-ar" viewBox="0 0 6 6" refX="5" refY="3" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L6 3L0 6z" fill="#0078d4"/></marker>
-  </defs>
-
-  <!-- Region box -->
-  <rect x="8" y="8" :width="w/2-16" :height="h-16" rx="6" fill="none" :stroke="dim" stroke-width="1" stroke-dasharray="4,2"/>
-  <text x="16" y="22" :fill="dim" font-size="7" font-weight="600" font-family="Segoe UI,sans-serif">AZURE REGION (AUSTRALIA EAST)</text>
-
-  <!-- EZ box -->
-  <rect :x="w/2+8" y="8" :width="w/2-16" :height="h-16" rx="6" fill="none" stroke="#0078d4" stroke-width="1.2"/>
-  <text :x="w/2+16" y="22" fill="#0078d4" font-size="7" font-weight="600" font-family="Segoe UI,sans-serif">AZURE EXTENDED ZONE (PERTH)</text>
-
-  <!-- Control Plane -->
-  <rect x="20" y="32" width="160" height="40" rx="5" :fill="box" :stroke="dim" stroke-width="1"/>
-  <text x="100" y="48" text-anchor="middle" :fill="pri" font-size="8" font-weight="600" font-family="Segoe UI,sans-serif">Control Plane</text>
-  <text x="100" y="60" text-anchor="middle" :fill="dim" font-size="6" font-family="Segoe UI,sans-serif">Management, Identity, Monitoring</text>
-
-  <!-- Data Plane -->
-  <rect :x="w/2+20" y="32" width="160" height="40" rx="5" fill="#deecf9" stroke="#0078d4" stroke-width="1"/>
-  <text :x="w/2+100" y="48" text-anchor="middle" fill="#005a9e" font-size="8" font-weight="600" font-family="Segoe UI,sans-serif">Data Plane</text>
-  <text :x="w/2+100" y="60" text-anchor="middle" fill="#0078d4" font-size="6" font-family="Segoe UI,sans-serif">VMs, Containers, Storage</text>
-
-  <!-- Arrow CP → DP -->
-  <line x1="180" y1="52" x2="w/2+16" y2="52" stroke="url(#ov-g)" stroke-width="1.5" stroke-dasharray="3,2" :x2="w/2+16"/>
-  <polygon :points="(w/2+12)+',49 '+(w/2+20)+',52 '+(w/2+12)+',55'" fill="#0078d4"/>
-  <circle r="2.5" fill="#00b7c3"><animate attributeName="cx" :values="'184;'+(w/2+12)" dur="2s" repeatCount="indefinite"/><animate attributeName="cy" values="52;52" dur="2s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;1;1;0" dur="2s" repeatCount="indefinite"/></circle>
-
-  <!-- Global Network bar -->
-  <rect x="8" y="82" :width="w-16" height="20" rx="4" fill="url(#ov-g)" opacity="0.12"/>
-  <rect x="8" y="82" :width="w-16" height="20" rx="4" fill="none" stroke="url(#ov-g)" stroke-width="0.8"/>
-  <text :x="w/2" y="95" text-anchor="middle" fill="#0078d4" font-size="6.5" font-weight="600" font-family="Segoe UI,sans-serif">Microsoft Global Network</text>
-  <circle r="2" fill="#00b7c3" opacity="0.8"><animate attributeName="cx" :values="'14;'+(w-14)" dur="3.5s" repeatCount="indefinite"/><animate attributeName="cy" values="92;92" dur="3.5s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;0.8;0.8;0" dur="3.5s" repeatCount="indefinite"/></circle>
-  <circle r="2" fill="#0078d4" opacity="0.8"><animate attributeName="cx" :values="'14;'+(w-14)" dur="3.5s" begin="1.2s" repeatCount="indefinite"/><animate attributeName="cy" values="92;92" dur="3.5s" begin="1.2s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;0.8;0.8;0" dur="3.5s" begin="1.2s" repeatCount="indefinite"/></circle>
-
-  <!-- Bottom: On-Prem & Users | Services -->
-  <rect x="20" y="112" width="72" height="30" rx="4" :fill="box" :stroke="dim" stroke-width="0.8"/>
-  <text x="56" y="125" text-anchor="middle" :fill="txt" font-size="6.5" font-weight="600" font-family="Segoe UI,sans-serif">On-Premises</text>
-  <text x="56" y="134" text-anchor="middle" :fill="dim" font-size="5.5" font-family="Segoe UI,sans-serif">Perth, WA</text>
-
-  <rect x="104" y="112" width="72" height="30" rx="4" :fill="box" :stroke="dim" stroke-width="0.8"/>
-  <text x="140" y="125" text-anchor="middle" :fill="txt" font-size="6.5" font-weight="600" font-family="Segoe UI,sans-serif">End Users</text>
-  <text x="140" y="134" text-anchor="middle" :fill="dim" font-size="5.5" font-family="Segoe UI,sans-serif">Low latency</text>
-
-  <rect :x="w/2+20" y="112" width="48" height="30" rx="4" :fill="box" stroke="#0078d4" stroke-width="0.8"/>
-  <text :x="w/2+44" y="128" text-anchor="middle" fill="#0078d4" font-size="5.5" font-weight="600" font-family="Segoe UI,sans-serif">Compute</text>
-
-  <rect :x="w/2+74" y="112" width="48" height="30" rx="4" :fill="box" stroke="#0078d4" stroke-width="0.8"/>
-  <text :x="w/2+98" y="128" text-anchor="middle" fill="#0078d4" font-size="5.5" font-weight="600" font-family="Segoe UI,sans-serif">Storage</text>
-
-  <rect :x="w/2+128" y="112" width="48" height="30" rx="4" :fill="box" stroke="#0078d4" stroke-width="0.8"/>
-  <text :x="w/2+152" y="128" text-anchor="middle" fill="#0078d4" font-size="5.5" font-weight="600" font-family="Segoe UI,sans-serif">Network</text>
-
-  <!-- Vertical connectors to network bar -->
-  <line x1="56" y1="112" x2="56" y2="102" :stroke="dim" stroke-width="0.8"/>
-  <line x1="140" y1="112" x2="140" y2="102" :stroke="dim" stroke-width="0.8"/>
-  <line :x1="w/2+44" y1="112" :x2="w/2+44" y2="102" stroke="#0078d4" stroke-width="0.8"/>
-  <line :x1="w/2+98" y1="112" :x2="w/2+98" y2="102" stroke="#0078d4" stroke-width="0.8"/>
-  <line :x1="w/2+152" y1="112" :x2="w/2+152" y2="102" stroke="#0078d4" stroke-width="0.8"/>
-</svg>
+<div class="ov-wrap">
+  <div class="ov-region">
+    <div class="ov-region-label">Azure Region (Australia East)</div>
+    <div class="ov-box ov-cp">
+      <div class="ov-box-title">Control Plane</div>
+      <div class="ov-box-sub">Management · Identity · Monitoring</div>
+    </div>
+  </div>
+  <div class="ov-arrow-h">
+    <div class="ov-arrow-line-h"><div class="ov-dot-h"></div></div>
+  </div>
+  <div class="ov-region ov-ez-region">
+    <div class="ov-region-label ov-ez-label">Azure Extended Zone (Perth)</div>
+    <div class="ov-box ov-dp">
+      <div class="ov-box-title">Data Plane</div>
+      <div class="ov-box-sub">VMs · Containers · Storage</div>
+    </div>
+  </div>
+</div>
+<div class="ov-net-bar">
+  <div class="ov-net-dot"></div>
+  <div class="ov-net-dot ov-net-dot-2"></div>
+  <span>Microsoft Global Network</span>
+</div>
+<div class="ov-bottom">
+  <div class="ov-bnode">On-Premises<br/><small>Perth, WA</small></div>
+  <div class="ov-bnode">End Users<br/><small>Low latency</small></div>
+  <div class="ov-bnode ov-bnode-az">Compute</div>
+  <div class="ov-bnode ov-bnode-az">Storage</div>
+  <div class="ov-bnode ov-bnode-az">Networking</div>
+</div>
 </template>
-<script setup>
-import { computed } from 'vue'
-const w = 400
-const h = 152
-const dark = computed(() => typeof document !== 'undefined' && document.documentElement.classList.contains('dark'))
-const box = computed(() => dark.value ? '#2a2a2a' : '#fff')
-const dim = computed(() => dark.value ? '#666' : '#999')
-const txt = computed(() => dark.value ? '#ddd' : '#222')
-const pri = computed(() => dark.value ? '#8cc8ff' : '#005a9e')
-</script>
+
+<style scoped>
+.ov-wrap{display:flex;align-items:stretch;gap:0;margin-top:.3em}
+.ov-region{flex:1;border:1px dashed #aaa;border-radius:6px;padding:.4em .5em;position:relative}
+.ov-ez-region{border:1.5px solid #0078d4;border-style:solid}
+.ov-region-label{font-size:.45em;font-weight:600;color:#888;text-transform:uppercase;letter-spacing:.04em;margin-bottom:.3em}
+.ov-ez-label{color:#0078d4}
+.ov-box{border-radius:5px;padding:.35em .5em;border:1px solid #ccc;background:#fff}
+.ov-cp .ov-box-title{color:#005a9e}
+.ov-dp{background:#deecf9;border-color:#0078d4}
+.ov-dp .ov-box-title{color:#005a9e}
+.ov-box-title{font-size:.55em;font-weight:700}
+.ov-box-sub{font-size:.4em;color:#888;margin-top:.1em}
+.ov-arrow-h{display:flex;align-items:center;width:40px;flex-shrink:0;justify-content:center}
+.ov-arrow-line-h{width:100%;height:2px;background:linear-gradient(90deg,#00b7c3,#0078d4);position:relative;overflow:visible}
+.ov-dot-h{position:absolute;top:-2.5px;width:6px;height:6px;border-radius:50%;background:#00b7c3;box-shadow:0 0 4px #00b7c3;animation:dh 1.8s linear infinite}
+@keyframes dh{0%{left:-6px;opacity:0}10%{opacity:1}90%{opacity:1}100%{left:100%;opacity:0}}
+.ov-net-bar{margin-top:.3em;background:linear-gradient(90deg,rgba(0,183,195,.12),rgba(0,120,212,.12));border:1px solid rgba(0,120,212,.25);border-radius:4px;padding:.2em .5em;text-align:center;font-size:.45em;font-weight:600;color:#0078d4;position:relative;overflow:hidden}
+.ov-net-dot{position:absolute;top:50%;width:5px;height:5px;border-radius:50%;background:#00b7c3;transform:translateY(-50%);animation:dn 3s linear infinite}
+.ov-net-dot-2{animation-delay:1s;background:#0078d4}
+@keyframes dn{0%{left:-5px;opacity:0}10%{opacity:.8}90%{opacity:.8}100%{left:100%;opacity:0}}
+.ov-bottom{display:flex;gap:.3em;margin-top:.3em}
+.ov-bnode{flex:1;border:1px solid #ccc;border-radius:4px;padding:.2em;text-align:center;font-size:.4em;font-weight:600;color:#333;background:#fff}
+.ov-bnode small{font-weight:400;color:#888;font-size:.85em}
+.ov-bnode-az{border-color:#0078d4;color:#0078d4}
+:global(html.dark) .ov-region{border-color:#555}
+:global(html.dark) .ov-box{background:#2a2a2a;border-color:#555}
+:global(html.dark) .ov-dp{background:#0f2440;border-color:#0078d4}
+:global(html.dark) .ov-region-label{color:#777}
+:global(html.dark) .ov-box-sub{color:#999}
+:global(html.dark) .ov-bnode{background:#2a2a2a;border-color:#555;color:#ddd}
+:global(html.dark) .ov-bnode small{color:#999}
+:global(html.dark) .ov-bnode-az{border-color:#4db8ff;color:#4db8ff}
+</style>
