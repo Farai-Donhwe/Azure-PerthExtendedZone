@@ -92,49 +92,43 @@ layout: section
 ## Small-footprint extensions of Azure — close to your users
 
 ---
-layout: two-cols
 transition: slide-up
 ---
 
 # Azure Extended Zones
 
-<v-clicks>
+<div class="grid grid-cols-2 gap-6 mt-1">
 
-<div class="feature-card mb-3">
+<div>
+
+<div class="feature-card mb-2">
 <h4>☁️ Small-Footprint Extensions</h4>
-<p>Strategically located in metropolitan areas, industry hubs, or specific jurisdictions</p>
+<p>Located in metropolitan areas, industry hubs, or specific jurisdictions</p>
 </div>
 
-<div class="feature-card mb-3">
+<div class="feature-card mb-2">
 <h4>🏗️ Architecture</h4>
-<p><strong>Control plane</strong> remains in parent region · <strong>Data plane</strong> deployed at Extended Zone site</p>
+<p><strong>Control plane</strong> in parent region · <strong>Data plane</strong> at Extended Zone site</p>
 </div>
 
-<div class="feature-card mb-3">
-<h4>🌐 Global Network</h4>
-<p>Integrated into Microsoft's global network for secure, reliable, high-bandwidth connectivity</p>
-</div>
-
-</v-clicks>
-
-::right::
-
-<div v-click class="mt-6">
-
-### Two Key Scenarios
-
-<div class="feature-card mb-3" style="border-left-color: #00b7c3;">
+<div class="feature-card mb-2" style="border-left-color: #00b7c3;">
 <h4>⚡ Latency</h4>
 <p>Run resources close to end users with minimal latency</p>
 </div>
 
-<div class="feature-card" style="border-left-color: #8764b8;">
+<div class="feature-card mb-2" style="border-left-color: #8764b8;">
 <h4>📍 Data Residency</h4>
-<p>Keep application data within a specific geography for privacy, regulatory, and compliance reasons</p>
+<p>Keep data within a specific geography for privacy and compliance</p>
 </div>
 
-<div class="section-banner mt-4">
-Supports VMs · Containers · Storage · Select Azure Services
+</div>
+
+<div>
+
+<img src="/images/overview-diagram.png" alt="Azure Extended Zones architecture overview" style="width: 100%; border-radius: 8px; border: 1px solid var(--azure-gray-200, #ebebeb);" />
+
+<p style="font-size: 0.65em; color: var(--azure-gray-500); text-align: center; margin-top: 0.4em;">Source: Azure Extended Zones — Architecture Overview</p>
+
 </div>
 
 </div>
@@ -198,62 +192,31 @@ transition: slide-up
 
 # Deployment Scenarios
 
-<div class="grid grid-cols-2 gap-8 mt-2">
+<div class="grid grid-cols-2 gap-6 mt-1">
 
-<div v-click>
+<div>
 
 <div class="section-banner">Scenario 1: Standalone</div>
 
-<div class="azure-card" style="padding: 1em;">
+<div class="azure-card" style="padding: 0.8em;">
 
-Deploy workloads **without connecting** to a parent region landing zone.
+<p style="font-size: 0.8em; margin-bottom: 0.5em;">Deploy workloads <strong>without connecting</strong> to a parent region landing zone.</p>
 
-<div class="flow-diagram">
-  <div class="flow-node flow-onprem">🏢 On-Premises Perth</div>
-  <div class="flow-arrow flow-arrow-down">
-    <div class="arrow-line"><div class="arrow-pulse"></div></div>
-    <span class="arrow-label">ExpressRoute</span>
-  </div>
-  <div class="flow-node flow-azure">☁️ Perth Extended Zone</div>
-  <div class="flow-arrow flow-arrow-up">
-    <div class="arrow-line"><div class="arrow-pulse arrow-pulse-up"></div></div>
-    <span class="arrow-label">Standard LB</span>
-  </div>
-  <div class="flow-node flow-onprem">🌐 Internet</div>
-</div>
+<img src="/images/image2.png" alt="Standalone deployment scenario" style="width: 100%; border-radius: 6px;" />
 
 </div>
 
 </div>
 
-<div v-click>
+<div>
 
 <div class="section-banner">Scenario 2: Extension</div>
 
-<div class="azure-card" style="padding: 1em;">
+<div class="azure-card" style="padding: 0.8em;">
 
-**Extend an existing landing zone** via vNet peering over the Microsoft backbone.
+<p style="font-size: 0.8em; margin-bottom: 0.5em;"><strong>Extend an existing landing zone</strong> via vNet peering over the Microsoft backbone.</p>
 
-<div class="flow-diagram">
-  <div class="flow-node flow-onprem">🏢 On-Premises</div>
-  <div class="flow-arrow flow-arrow-down">
-    <div class="arrow-line"><div class="arrow-pulse"></div></div>
-    <span class="arrow-label">ExpressRoute</span>
-  </div>
-  <div class="flow-node flow-azure">☁️ Perth Extended Zone</div>
-  <div class="flow-branch">
-    <div class="flow-arrow flow-arrow-right">
-      <div class="arrow-line-h"><div class="arrow-pulse-h"></div></div>
-      <span class="arrow-label">vNet Peering</span>
-    </div>
-    <div class="flow-node flow-azure-east">☁️ Australia East</div>
-  </div>
-  <div class="flow-arrow flow-arrow-up">
-    <div class="arrow-line"><div class="arrow-pulse arrow-pulse-up"></div></div>
-    <span class="arrow-label">Standard LB</span>
-  </div>
-  <div class="flow-node flow-onprem">🌐 Internet</div>
-</div>
+<img src="/images/image3.png" alt="Extension deployment scenario" style="width: 100%; border-radius: 6px;" />
 
 </div>
 
@@ -261,178 +224,37 @@ Deploy workloads **without connecting** to a parent region landing zone.
 
 </div>
 
-<style>
-.flow-diagram {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0;
-  margin-top: 0.6em;
-  font-size: 0.75em;
-}
-.flow-node {
-  padding: 0.5em 1.2em;
-  border-radius: 8px;
-  font-weight: 600;
-  text-align: center;
-  min-width: 160px;
-  z-index: 2;
-}
-.flow-onprem {
-  background: var(--azure-gray-100, #f5f5f5);
-  border: 2px solid var(--azure-gray-300, #d2d2d2);
-  color: var(--azure-gray-700, #3b3b3b);
-}
-.flow-azure {
-  background: var(--azure-blue-light, #deecf9);
-  border: 2px solid var(--azure-blue, #0078d4);
-  color: var(--azure-blue-dark, #005a9e);
-}
-.flow-azure-east {
-  background: #e8f4e8;
-  border: 2px solid #107c10;
-  color: #0b5e0b;
-}
-.flow-arrow {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-  height: 36px;
-  width: 4px;
-}
-.arrow-line {
-  width: 3px;
-  height: 100%;
-  background: var(--azure-blue, #0078d4);
-  border-radius: 2px;
-  position: relative;
-  overflow: hidden;
-}
-.arrow-pulse {
-  position: absolute;
-  top: -8px;
-  left: -2px;
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--azure-teal, #00b7c3);
-  box-shadow: 0 0 6px var(--azure-teal, #00b7c3);
-  animation: flowDown 1.5s ease-in-out infinite;
-}
-.arrow-pulse-up {
-  animation: flowUp 1.5s ease-in-out infinite;
-}
-@keyframes flowDown {
-  0% { top: -8px; opacity: 0; }
-  20% { opacity: 1; }
-  80% { opacity: 1; }
-  100% { top: 36px; opacity: 0; }
-}
-@keyframes flowUp {
-  0% { top: 36px; opacity: 0; }
-  20% { opacity: 1; }
-  80% { opacity: 1; }
-  100% { top: -8px; opacity: 0; }
-}
-.arrow-label {
-  position: absolute;
-  left: 12px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 0.8em;
-  color: var(--azure-gray-500, #6e6e6e);
-  white-space: nowrap;
-  font-weight: 500;
-}
-.flow-branch {
-  display: flex;
-  align-items: center;
-  gap: 0;
-  margin: 0.2em 0;
-}
-.flow-arrow-right {
-  display: flex;
-  align-items: center;
-  position: relative;
-  width: 60px;
-  height: 4px;
-  flex-direction: row;
-}
-.arrow-line-h {
-  height: 3px;
-  width: 100%;
-  background: var(--azure-blue, #0078d4);
-  border-radius: 2px;
-  position: relative;
-  overflow: hidden;
-}
-.arrow-pulse-h {
-  position: absolute;
-  left: -8px;
-  top: -2px;
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--azure-teal, #00b7c3);
-  box-shadow: 0 0 6px var(--azure-teal, #00b7c3);
-  animation: flowRight 1.5s ease-in-out infinite;
-}
-@keyframes flowRight {
-  0% { left: -8px; opacity: 0; }
-  20% { opacity: 1; }
-  80% { opacity: 1; }
-  100% { left: 60px; opacity: 0; }
-}
-.flow-arrow-right .arrow-label {
-  left: auto;
-  top: -16px;
-  transform: none;
-  left: 50%;
-  transform: translateX(-50%);
-}
-</style>
+<p style="font-size: 0.65em; color: var(--azure-gray-500); text-align: center; margin-top: 0.3em;">¹ Azure VPN is a roadmap item. Site-to-Site VPN connectivity via 3rd-party solution.</p>
 
 ---
 transition: fade
 ---
 
-# Service Availability
+# Service Availability & Timelines
 
-<div class="mt-2">
+<div class="mt-1">
 
-| Category | Available Services | Status |
-|:---------|:-------------------|:-------|
-| **Compute** | AKS, AVD, VMSS, VMs (A/B/D/E/F + GPU NVadsA10 v5) | <span class="status-complete">✅ GA</span> |
-| **Networking** | ExpressRoute, DDoS, Private Link, Standard LB, vNet, vNet Peering | <span class="status-complete">✅ GA</span> |
-| **Storage** | Managed Disks, Premium Blobs/Files, ADLS Gen2, SFTP, NFS | <span class="status-complete">✅ GA</span> |
-| **BCDR** | Azure Site Recovery, Azure Backup | <span class="status-complete">✅ GA</span> |
-| **Arc-enabled** | PostgreSQL, Managed SQL, Container Apps | <span class="status-progress">🔄 Preview</span> |
+<img src="/images/image4.png" alt="Azure Extended Zones service deployment diagram" style="width: 100%; border-radius: 8px; border: 1px solid var(--azure-gray-200, #ebebeb); margin-bottom: 0.5em;" />
 
 </div>
 
-<v-click>
+<div style="font-size: 0.72em;">
 
-<div class="mt-4">
-<div class="section-banner">🔮 Roadmap (Post-GA)</div>
+| Category | Available Services | Status | Timeline |
+|:---------|:-------------------|:-------|:---------|
+| **Compute** | AKS, AVD, VMSS, VMs (A/B/D/E/F + GPU NVadsA10 v5) | <span class="status-complete">✅ GA</span> | At launch |
+| **Networking** | ExpressRoute, DDoS, Private Link, Standard LB, vNet Peering | <span class="status-complete">✅ GA</span> | At launch |
+| **Storage** | Managed Disks, Premium Blobs/Files, ADLS Gen2, SFTP, NFS | <span class="status-complete">✅ GA</span> | At launch |
+| **BCDR** | Azure Site Recovery, Azure Backup | <span class="status-complete">✅ GA</span> | At launch |
+| **Arc-enabled** | PostgreSQL, Managed SQL, Container Apps | <span class="status-progress">🔄 Preview</span> | Preview at launch |
+| **Firewall** | Azure Firewall | <span class="status-complete">✅ GA</span> | Available at GA |
+| **App Gateway** | Application Gateway | <span class="status-roadmap">🔮 Roadmap</span> | Post-GA |
+| **VPN Gateway** | VPN Gateway | <span class="status-roadmap">🔮 Roadmap</span> | Post-GA |
+| **NAT Gateway** | NAT Gateway | <span class="status-roadmap">🔮 Roadmap</span> | Post-GA |
 
-<div class="process-flow mt-2">
-<div class="process-step">
-<h4>Application Gateway</h4>
-</div>
-<div class="process-step">
-<h4>VPN Gateway</h4>
-</div>
-<div class="process-step">
-<h4>NAT Gateway</h4>
-</div>
-<div class="process-step">
-<h4>Azure Firewall</h4>
-</div>
-</div>
 </div>
 
-</v-click>
+<p style="font-size: 0.6em; color: var(--azure-gray-500); margin-top: 0.2em;">Source: <a href="https://learn.microsoft.com/en-us/azure/extended-zones/overview" target="_blank">Azure Extended Zones documentation</a> · Contact your Microsoft account team for latest timeline updates.</p>
 
 ---
 transition: slide-left
@@ -470,13 +292,13 @@ transition: slide-left
 
 | Vendor | Status |
 |:-------|:-------|
-| **Aviatrix** | <span class="status-complete">✅ Complete</span> |
-| **Fortinet** | <span class="status-complete">✅ Complete</span> |
-| **Checkpoint** | <span class="status-progress">🔄 Validating</span> |
-| **Citrix** | <span class="status-progress">🔄 Validating</span> |
-| **F5 Network** | <span class="status-progress">🔄 Validating</span> |
-| **Palo Alto** | <span class="status-progress">🔄 Validating</span> |
-| **Red Hat** | <span class="status-progress">🔄 Validating</span> |
+| [**Aviatrix**](https://aviatrix.com/azure/) | <span class="status-complete">✅ Complete</span> |
+| [**Fortinet**](https://azuremarketplace.microsoft.com/en-au/marketplace/apps/fortinet.fortinet-fortigate?tab=Overview) | <span class="status-complete">✅ Complete</span> |
+| [**Checkpoint**](https://azuremarketplace.microsoft.com/en-au/marketplace/apps/checkpoint.vsec?tab=Overview) | <span class="status-progress">🔄 Validating</span> |
+| [**Citrix**](https://docs.citrix.com/en-us/citrix-daas/overview.html) | <span class="status-progress">🔄 Validating</span> |
+| [**F5 Network**](https://azuremarketplace.microsoft.com/en-au/marketplace/apps/f5-networks.f5-big-ip-byol?tab=Overview) | <span class="status-progress">🔄 Validating</span> |
+| [**Palo Alto**](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/paloaltonetworks.vmseries-ngfw?tab=Overview) | <span class="status-progress">🔄 Validating</span> |
+| [**Red Hat**](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/redhat.rhel-20190605?tab=Overview) | <span class="status-progress">🔄 Validating</span> |
 
 </div>
 
