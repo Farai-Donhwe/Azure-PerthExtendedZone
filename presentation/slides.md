@@ -130,9 +130,9 @@ transition: slide-up
 
 <div>
 
-<img src="/images/overview-diagram.png" alt="Azure Extended Zones architecture overview" style="width: 100%; border-radius: 8px; border: 1px solid var(--azure-gray-200, #ebebeb);" />
+<OverviewDiagram />
 
-<p style="font-size: 0.65em; color: var(--azure-gray-500); text-align: center; margin-top: 0.4em;">Source: Azure Extended Zones — Architecture Overview</p>
+<p style="font-size: 0.65em; color: var(--azure-gray-500); text-align: center; margin-top: 0.4em;">Azure Extended Zones — Architecture Overview</p>
 
 </div>
 
@@ -205,9 +205,9 @@ transition: slide-up
 
 <div class="azure-card" style="padding: 0.8em;">
 
-<p style="font-size: 0.8em; margin-bottom: 0.5em;">Deploy workloads <strong>without connecting</strong> to a parent region landing zone.</p>
+<p style="font-size: 0.8em; margin-bottom: 0.3em;">Deploy workloads <strong>without connecting</strong> to a parent region landing zone.</p>
 
-<img src="/images/image2.png" alt="Standalone deployment scenario" style="width: 100%; border-radius: 6px;" />
+<DeployStandalone />
 
 </div>
 
@@ -219,9 +219,9 @@ transition: slide-up
 
 <div class="azure-card" style="padding: 0.8em;">
 
-<p style="font-size: 0.8em; margin-bottom: 0.5em;"><strong>Extend an existing landing zone</strong> via vNet peering over the Microsoft backbone.</p>
+<p style="font-size: 0.8em; margin-bottom: 0.3em;"><strong>Extend an existing landing zone</strong> via vNet peering over the Microsoft backbone.</p>
 
-<img src="/images/image3.png" alt="Extension deployment scenario" style="width: 100%; border-radius: 6px;" />
+<DeployExtension />
 
 </div>
 
