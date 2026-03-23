@@ -100,43 +100,11 @@ layout: section
 transition: slide-up
 ---
 
-# Azure Extended Zones
-
-<div class="grid grid-cols-2 gap-6 mt-1">
-
-<div>
-
-<div class="feature-card mb-2">
-<h4>☁️ Small-Footprint Extensions</h4>
-<p>Located in metropolitan areas, industry hubs, or specific jurisdictions</p>
-</div>
-
-<div class="feature-card mb-2">
-<h4>🏗️ Architecture</h4>
-<p><strong>Control plane</strong> in parent region · <strong>Data plane</strong> at Extended Zone site</p>
-</div>
-
-<div class="feature-card mb-2" style="border-left-color: #00b7c3;">
-<h4>⚡ Latency</h4>
-<p>Run resources close to end users with minimal latency</p>
-</div>
-
-<div class="feature-card mb-2" style="border-left-color: #8764b8;">
-<h4>📍 Data Residency</h4>
-<p>Keep data within a specific geography for privacy and compliance</p>
-</div>
-
-</div>
-
-<div>
+# Azure Extended Zones <span style="font-size:0.45em; font-weight:400; color: #6e6e6e;">— is an extension of Azure Region</span>
 
 <OverviewDiagram />
 
-<p style="font-size: 0.65em; color: var(--azure-gray-500); text-align: center; margin-top: 0.4em;">Azure Extended Zones — Architecture Overview</p>
-
-</div>
-
-</div>
+<p style="font-size: 0.55em; color: var(--azure-gray-500); text-align: center; margin-top: 0.15em;">Azure Extended Zones — Architecture Overview &nbsp;·&nbsp; Hover icons for details</p>
 
 ---
 layout: section
