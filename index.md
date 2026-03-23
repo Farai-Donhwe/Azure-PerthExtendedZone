@@ -34,6 +34,7 @@ This technical document is intended for **solution architects** and other techni
 | Topic | Description |
 |:------|:------------|
 | [Service Availability]({% link docs/overview/service-availability.md %}) | Which Azure services are available in the Perth Extended Zone |
+| [Competitive Positioning]({% link docs/overview/competitive-positioning.md %}) | Azure PEZ vs AWS Local Zones comparison |
 | [Networking & Connectivity]({% link docs/design-considerations/networking.md %}) | Network topologies, ExpressRoute, VPN, and internet access |
 | [Security & Compliance]({% link docs/design-considerations/security.md %}) | Security services, data residency, and compliance standards |
 | [BCDR]({% link docs/design-considerations/bcdr.md %}) | Business continuity, disaster recovery, and migration |

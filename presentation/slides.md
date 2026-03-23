@@ -82,6 +82,11 @@ transition: fade-out
 <p>Key recommendations and pricing</p>
 </div>
 
+<div v-click class="feature-card" style="grid-column: span 2;">
+<h4>⚔️ <a href="/18">Competitive Positioning — Azure PEZ vs AWS</a></h4>
+<p>Why Azure PEZ offers a stronger local cloud than AWS Local Zones</p>
+</div>
+
 </div>
 
 ---
@@ -681,6 +686,95 @@ transition: slide-up
 </div>
 
 </div>
+
+---
+transition: slide-up
+---
+
+# Competitive Positioning
+
+<p style="color: #0078d4; font-weight: 600; font-size: 0.85em; margin-bottom: 0.2em;">Why Azure PEZ is Stronger Than AWS Local Zones</p>
+<p style="color: #6e6e6e; font-size: 0.85em; margin-bottom: 0.8em;">A richer service catalogue and a clearer BC/DR path</p>
+
+<div class="grid grid-cols-2 gap-0 mt-1">
+
+<div>
+
+<div class="section-banner" style="border-radius: 8px 0 0 0;">Azure PEZ (Perth Extended Zone)</div>
+
+<div v-click class="feature-card mb-1" style="border-left-color: #107c10;">
+<h4>Object / Blob Storage</h4>
+<p><span class="status-complete">✅</span> Premium Blob Storage locally (Block Blobs, Page Blobs, Files, ADLS Gen2)</p>
+</div>
+
+<div v-click class="feature-card mb-1" style="border-left-color: #107c10;">
+<h4>Managed Databases</h4>
+<p><span class="status-complete">✅</span> Azure SQL Managed Instance</p>
+</div>
+
+<div v-click class="feature-card mb-1" style="border-left-color: #107c10;">
+<h4>Virtual Desktop (VDI)</h4>
+<p><span class="status-complete">✅</span> Azure Virtual Desktop — IRAP PROTECTED</p>
+</div>
+
+<div v-click class="feature-card mb-1" style="border-left-color: #107c10;">
+<h4>Key Management</h4>
+<p><span class="status-complete">✅</span> Azure Key Vault locally available</p>
+</div>
+
+<div v-click class="feature-card mb-1" style="border-left-color: #107c10;">
+<h4>BC / DR Failover</h4>
+<p><span class="status-complete">✅</span> Azure Site Recovery — managed VM failover to Sydney</p>
+</div>
+
+<div v-click class="feature-card mb-1" style="border-left-color: #107c10;">
+<h4>Government Compliance</h4>
+<p><span class="status-complete">✅</span> IRAP PROTECTED assessed</p>
+</div>
+
+</div>
+
+<div>
+
+<div class="section-banner" style="background: #6e6e6e; border-radius: 0 8px 0 0;">AWS Local Zones</div>
+
+<div v-click class="feature-card mb-1" style="border-left-color: #d13438;">
+<h4>Object / Blob Storage</h4>
+<p><span class="status-no">❌</span> No local S3 or object storage</p>
+</div>
+
+<div v-click class="feature-card mb-1" style="border-left-color: #d13438;">
+<h4>Managed Databases</h4>
+<p><span class="status-no">❌</span> No local RDS or managed databases</p>
+</div>
+
+<div v-click class="feature-card mb-1" style="border-left-color: #d13438;">
+<h4>Virtual Desktop (VDI)</h4>
+<p><span class="status-no">❌</span> No managed VDI service</p>
+</div>
+
+<div v-click class="feature-card mb-1" style="border-left-color: #d13438;">
+<h4>Key Management</h4>
+<p><span class="status-no">❌</span> No local KMS</p>
+</div>
+
+<div v-click class="feature-card mb-1" style="border-left-color: #d13438;">
+<h4>BC / DR Failover</h4>
+<p><span class="status-no">❌</span> Limited — manual failover paths only</p>
+</div>
+
+<div v-click class="feature-card mb-1" style="border-left-color: #d13438;">
+<h4>Government Compliance</h4>
+<p><span class="status-no">❌</span> IRAP status unclear for Perth Local Zone</p>
+</div>
+
+</div>
+
+</div>
+
+<blockquote style="font-size: 0.75em; margin-top: 0.5em;">
+💡 AWS Local Zones are <strong>compute-only</strong> extensions. Azure PEZ is a <strong>full-service local cloud</strong> — with storage, managed databases, desktop virtualisation, and built-in disaster recovery.
+</blockquote>
 
 ---
 layout: center
