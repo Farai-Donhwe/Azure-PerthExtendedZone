@@ -1,7 +1,7 @@
-<!-- Cover / Title slide — Azure hero style with gradient overlay -->
+<!-- Cover / Title slide — Azure hero style, full-page with decorative elements -->
 <template>
   <div class="slidev-layout azure-cover">
-    <div class="cover-content">
+    <div class="cover-left">
       <div class="ms-logo">
         <svg width="21" height="21" viewBox="0 0 21 21" fill="none">
           <rect width="10" height="10" fill="#f25022"/>
@@ -11,12 +11,17 @@
         </svg>
         <span>Microsoft Azure</span>
       </div>
-      <slot />
+      <div class="cover-text">
+        <slot />
+      </div>
     </div>
-    <div class="cover-decoration">
-      <div class="deco-circle deco-1"></div>
-      <div class="deco-circle deco-2"></div>
-      <div class="deco-circle deco-3"></div>
+    <div class="cover-right">
+      <div class="cover-deco">
+        <div class="deco-circle deco-1"></div>
+        <div class="deco-circle deco-2"></div>
+        <div class="deco-circle deco-3"></div>
+        <div class="deco-circle deco-4"></div>
+      </div>
     </div>
   </div>
 </template>
@@ -24,28 +29,45 @@
 <style>
 .azure-cover {
   display: flex;
-  align-items: center;
-  background: linear-gradient(135deg, #ffffff 0%, #f0f6fc 50%, #deecf9 100%);
+  width: 100%;
+  height: 100%;
+  margin: 0;
   padding: 0;
   overflow: hidden;
   position: relative;
-}
-
-html.dark .azure-cover {
-  background: linear-gradient(135deg, #1e1e1e 0%, #1a2a3a 50%, #1a3a5c 100%);
-}
-
-html.dark .ms-logo span {
-  color: #d0d0d0;
+  background: linear-gradient(160deg, #f7f9fc 0%, #eaf2fb 40%, #dae8f8 100%);
 }
 
 .azure-cover::before {
-  height: 0;
+  display: none;
 }
 
-.cover-content {
-  flex: 1;
-  padding: 3rem 4rem;
+/* Left content area */
+.cover-left {
+  flex: 0 0 55%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 4rem 3rem 4rem 5rem;
+  z-index: 2;
+  position: relative;
+}
+
+/* Diagonal edge */
+.cover-left::after {
+  content: '';
+  position: absolute;
+  top: -10%;
+  right: -80px;
+  width: 200px;
+  height: 120%;
+  background: linear-gradient(160deg, #f7f9fc 0%, #eaf2fb 40%, #dae8f8 100%);
+  transform: skewX(-6deg);
+  z-index: 1;
+}
+
+.cover-text {
+  position: relative;
   z-index: 2;
 }
 
@@ -56,15 +78,15 @@ html.dark .ms-logo span {
   font-size: 0.85em;
   color: #3b3b3b;
   font-weight: 500;
-  margin-bottom: 2em;
+  margin-bottom: 2.5em;
 }
 
 .azure-cover h1 {
-  font-size: 3em;
+  font-size: 3.2em;
   color: #0078d4;
   font-weight: 700;
   line-height: 1.1;
-  margin-bottom: 0.2em;
+  margin-bottom: 0.15em;
 }
 
 .azure-cover h2 {
@@ -79,42 +101,95 @@ html.dark .ms-logo span {
   font-size: 1em;
 }
 
-.cover-decoration {
+/* Right decorative area */
+.cover-right {
+  flex: 0 0 45%;
+  position: relative;
+  overflow: hidden;
+}
+
+.cover-deco {
   position: absolute;
-  right: -5%;
-  top: -10%;
-  width: 55%;
-  height: 120%;
-  z-index: 1;
+  inset: 0;
 }
 
 .deco-circle {
   position: absolute;
   border-radius: 50%;
-  opacity: 0.15;
 }
 
 .deco-1 {
-  width: 500px;
-  height: 500px;
-  background: linear-gradient(135deg, #00b7c3, #0078d4);
-  top: 10%;
-  right: 5%;
+  width: 450px;
+  height: 450px;
+  background: linear-gradient(135deg, rgba(0, 183, 195, 0.35), rgba(0, 120, 212, 0.25));
+  top: -5%;
+  right: -10%;
 }
 
 .deco-2 {
   width: 300px;
   height: 300px;
-  background: linear-gradient(135deg, #0078d4, #005a9e);
+  background: linear-gradient(135deg, rgba(0, 120, 212, 0.2), rgba(0, 90, 158, 0.15));
   top: 50%;
-  right: 25%;
+  right: 15%;
 }
 
 .deco-3 {
-  width: 200px;
-  height: 200px;
-  background: linear-gradient(135deg, #00b7c3, #50e6ff);
-  top: 5%;
-  right: 35%;
+  width: 180px;
+  height: 180px;
+  background: linear-gradient(135deg, rgba(0, 183, 195, 0.25), rgba(80, 230, 255, 0.15));
+  top: 8%;
+  right: 50%;
+}
+
+.deco-4 {
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(135deg, rgba(0, 183, 195, 0.18), rgba(0, 120, 212, 0.12));
+  top: 70%;
+  right: 60%;
+}
+
+/* ============================================================
+   Dark mode
+   ============================================================ */
+html.dark .azure-cover {
+  background: linear-gradient(160deg, #1a1a2e 0%, #16213e 40%, #0f3460 100%);
+}
+
+html.dark .cover-left::after {
+  background: linear-gradient(160deg, #1a1a2e 0%, #16213e 40%, #0f3460 100%);
+}
+
+html.dark .ms-logo span {
+  color: #d0d0d0;
+}
+
+html.dark .azure-cover h1 {
+  color: #4db8ff;
+}
+
+html.dark .azure-cover h2 {
+  color: #b0b0b0;
+}
+
+html.dark .azure-cover p {
+  color: #909090;
+}
+
+html.dark .deco-1 {
+  background: linear-gradient(135deg, rgba(0, 183, 195, 0.3), rgba(77, 184, 255, 0.2));
+}
+
+html.dark .deco-2 {
+  background: linear-gradient(135deg, rgba(77, 184, 255, 0.18), rgba(0, 90, 158, 0.12));
+}
+
+html.dark .deco-3 {
+  background: linear-gradient(135deg, rgba(0, 183, 195, 0.22), rgba(80, 230, 255, 0.1));
+}
+
+html.dark .deco-4 {
+  background: linear-gradient(135deg, rgba(64, 217, 226, 0.15), rgba(77, 184, 255, 0.1));
 }
 </style>
