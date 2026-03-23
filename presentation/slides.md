@@ -16,7 +16,7 @@ mdc: true
 
 ## Customer Playbook
 
-<div class="azure-badge mt-4">Version 1.2 — May 2025</div>
+<VersionBadge />
 
 <p class="mt-6" style="color: #6e6e6e; font-size: 0.9em;">
 Accelerate cloud adoption in Western Australia with low-latency, data-resident Azure services.
@@ -743,6 +743,20 @@ transition: fade
 </div>
 
 ---
+layout: end
+---
+
+# Thank You
+
+## Perth Extended Zone Customer Playbook
+
+Version 1.2 — May 2025
+
+[📖 Full Playbook](https://DonFarCreative.github.io/Perth-Extended-Zone/) · [💻 GitHub Repo](https://github.com/DonFarCreative/Perth-Extended-Zone)
+
+© Microsoft Corporation. All rights reserved.
+
+---
 layout: section
 ---
 
@@ -777,17 +791,3 @@ transition: fade
 <blockquote style="font-size: 0.7em; margin-top: 0.3em;">
 📋 Full commit history: <a href="https://github.com/DonFarCreative/Perth-Extended-Zone/commits/main" target="_blank">github.com/DonFarCreative/Perth-Extended-Zone/commits/main</a>
 </blockquote>
-
----
-layout: end
----
-
-# Thank You
-
-## Perth Extended Zone Customer Playbook
-
-Version 1.2 — May 2025
-
-[📖 Full Playbook](https://DonFarCreative.github.io/Perth-Extended-Zone/) · [💻 GitHub Repo](https://github.com/DonFarCreative/Perth-Extended-Zone)
-
-© Microsoft Corporation. All rights reserved.

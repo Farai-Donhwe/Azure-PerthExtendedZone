@@ -40,7 +40,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 4rem 4rem 4rem 5rem;
+  padding: 4rem 2rem 4rem 5rem;
   z-index: 2;
   position: relative;
 }
@@ -56,18 +56,23 @@
 
 .azure-section h1 {
   color: #002050;
-  font-size: 3.2em;
+  font-size: 2.8em;
   font-weight: 700;
   line-height: 1.1;
-  margin: 0 0 0.3em 0;
+  margin: 0 0 0.4em 0;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .azure-section h2 {
   color: #505050;
   font-weight: 400;
-  font-size: 1.2em;
-  line-height: 1.4;
+  font-size: 1.1em;
+  line-height: 1.5;
   margin: 0;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
 }
 
 .azure-section p {
