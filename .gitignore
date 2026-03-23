@@ -1,0 +1,11 @@
+# Dependency directory
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+vendor/
+node_modules/
+
+# OS files
+.DS_Store
+Thumbs.db
