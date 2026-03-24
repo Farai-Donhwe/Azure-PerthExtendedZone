@@ -1,56 +1,97 @@
 <template>
-<div class="ds-diagram">
-  <div class="ds-node ds-gray">Remote Location</div>
-  <div class="ds-conn"><div class="ds-line-v"><div class="ds-dot-down"></div></div></div>
-  <div class="ds-node ds-blue">Internet</div>
-  <div class="ds-row">
-    <div class="ds-side-path">
-      <div class="ds-side-line"><div class="ds-dot-up"></div></div>
-      <div class="ds-side-line"><div class="ds-dot-up ds-dot-up-2"></div></div>
+<div class="ds">
+  <!-- Remote Location (top center) -->
+  <div class="ds-top">
+    <div class="ds-spacer"></div>
+    <div class="ds-top-center">
+      <div class="n n-gray">Remote Location</div>
+      <div class="cv"><div class="lv"><div class="dot dot-d"></div></div></div>
     </div>
-    <div class="ds-center-col">
-      <div class="ds-conn"><div class="ds-line-v"><div class="ds-dot-down"></div></div></div>
-      <div class="ds-node ds-gray">VPN</div>
-      <div class="ds-conn"><div class="ds-line-v ds-line-az"><div class="ds-dot-down ds-dot-az"></div></div></div>
+    <div class="ds-spacer"></div>
+  </div>
+
+  <!-- 3-path grid: On-Premise | Paths | Azure EZ vNet -->
+  <div class="ds-grid">
+    <!-- Left: On-Premise Datacentre -->
+    <div class="ds-left">
+      <div class="n n-gray n-dc">On-Premise<br>Datacentre</div>
+    </div>
+
+    <!-- Center: 3 horizontal paths stacked -->
+    <div class="ds-paths">
+      <!-- Path 1: Internet -->
+      <div class="path">
+        <div class="ch"><div class="lh"><div class="dot dot-r"></div></div></div>
+        <div class="n n-blue">Internet</div>
+        <div class="ch"><div class="lh"><div class="dot dot-r dot-r2"></div></div></div>
+      </div>
+      <!-- Path 2: VPN -->
+      <div class="path">
+        <div class="ch"><div class="lh"><div class="dot dot-r dot-r3"></div></div></div>
+        <div class="n n-gray">VPN</div>
+        <div class="ch"><div class="lh"><div class="dot dot-r dot-r4"></div></div></div>
+      </div>
+      <!-- Path 3: ExpressRoute -->
+      <div class="path">
+        <div class="ch"><div class="lh lh-az"><div class="dot dot-r dot-az"></div></div></div>
+        <div class="n n-azure">ExpressRoute</div>
+        <div class="ch"><div class="lh lh-az"><div class="dot dot-r dot-az dot-r5"></div></div></div>
+      </div>
+    </div>
+
+    <!-- Right: Azure Extended Zone vNet -->
+    <div class="ds-right">
+      <div class="n n-az-strong">Azure Extended<br>Zone vNet</div>
     </div>
   </div>
-  <div class="ds-bottom">
-    <div class="ds-node ds-gray ds-sm">On-Premise DC</div>
-    <div class="ds-conn-h"><div class="ds-line-h ds-line-az"><div class="ds-dot-right ds-dot-az"></div></div></div>
-    <div class="ds-node ds-azure ds-sm">ExpressRoute</div>
-    <div class="ds-conn-h"><div class="ds-line-h ds-line-az"><div class="ds-dot-right ds-dot-az"></div></div></div>
-    <div class="ds-node ds-azure-strong ds-sm">Azure EZ vNet</div>
-  </div>
-  <div class="ds-footnote">Private: ExpressRoute · Public: Std LB · VPN (ISV)</div>
+
+  <div class="ds-foot">Private: ExpressRoute · Public: Std LB · VPN (ISV¹)</div>
 </div>
 </template>
 
 <style scoped>
-.ds-diagram{display:flex;flex-direction:column;align-items:center;gap:0;font-family:'Segoe UI',sans-serif;font-size:.7em}
-.ds-node{padding:.3em .7em;border-radius:5px;font-weight:600;text-align:center;font-size:.85em;white-space:nowrap}
-.ds-gray{background:var(--azure-gray-100,#f5f5f5);border:1.5px solid var(--azure-gray-300,#d2d2d2);color:var(--azure-gray-700,#3b3b3b)}
-.ds-blue{background:var(--azure-gray-100,#f5f5f5);border:1.5px solid #0078d4;color:#0078d4}
-.ds-azure{background:#deecf9;border:1.5px solid #0078d4;color:#005a9e}
-.ds-azure-strong{background:#deecf9;border:2px solid #0078d4;color:#005a9e;font-weight:700}
-.ds-sm{font-size:.75em;padding:.25em .5em}
-.ds-conn{display:flex;justify-content:center;height:18px}
-.ds-line-v{width:2px;height:100%;background:#aaa;position:relative;overflow:visible}
-.ds-line-az{background:#0078d4}
-.ds-dot-down{position:absolute;left:-2.5px;width:5px;height:5px;border-radius:50%;background:#00b7c3;box-shadow:0 0 4px #00b7c3;animation:dd 1.3s ease-in-out infinite}
-.ds-dot-az{background:#0078d4;box-shadow:0 0 4px #0078d4}
-@keyframes dd{0%{top:-5px;opacity:0}15%{opacity:1}85%{opacity:1}100%{top:100%;opacity:0}}
-.ds-dot-up{position:absolute;left:-2.5px;width:5px;height:5px;border-radius:50%;background:#00b7c3;box-shadow:0 0 4px #00b7c3;animation:du 1.8s ease-in-out infinite}
-.ds-dot-up-2{animation-delay:.6s}
-@keyframes du{0%{bottom:-5px;opacity:0}15%{opacity:1}85%{opacity:1}100%{bottom:100%;opacity:0}}
-.ds-row{display:flex;align-items:stretch;width:100%}
-.ds-side-path{position:absolute;left:20%;display:flex;gap:8px;height:100%}
-.ds-side-line{width:2px;height:100%;background:#aaa;position:relative;overflow:visible}
-.ds-center-col{display:flex;flex-direction:column;align-items:center;flex:1}
-.ds-row{position:relative}
-.ds-bottom{display:flex;align-items:center;gap:0;margin-top:.2em}
-.ds-conn-h{width:16px;display:flex;align-items:center}
-.ds-line-h{height:2px;width:100%;background:#aaa;position:relative;overflow:visible}
-.ds-dot-right{position:absolute;top:-2.5px;width:5px;height:5px;border-radius:50%;background:#00b7c3;box-shadow:0 0 4px #00b7c3;animation:dr .9s ease-in-out infinite}
-@keyframes dr{0%{left:-5px;opacity:0}15%{opacity:1}85%{opacity:1}100%{left:100%;opacity:0}}
-.ds-footnote{font-size:.55em;color:#888;margin-top:.4em;text-align:center}
+.ds { font-family: 'Segoe UI', sans-serif; font-size: .72em; }
+
+/* Nodes */
+.n { padding: .3em .6em; border-radius: 5px; font-weight: 600; text-align: center; font-size: .82em; white-space: nowrap; }
+.n-gray { background: #f5f5f5; border: 1.5px solid #d2d2d2; color: #3b3b3b; }
+.n-blue { background: #f5f5f5; border: 1.5px solid #0078d4; color: #0078d4; }
+.n-azure { background: #deecf9; border: 1.5px solid #0078d4; color: #005a9e; }
+.n-az-strong { background: #deecf9; border: 2px solid #0078d4; color: #005a9e; font-weight: 700; }
+.n-dc { line-height: 1.3; white-space: normal; }
+
+/* Top section: Remote Location → Internet */
+.ds-top { display: flex; justify-content: center; margin-bottom: 0; }
+.ds-top-center { display: flex; flex-direction: column; align-items: center; }
+.ds-spacer { flex: 1; }
+
+/* Vertical connector */
+.cv { display: flex; justify-content: center; height: 16px; }
+.lv { width: 1.5px; height: 100%; background: #aaa; position: relative; overflow: visible; }
+
+/* Horizontal connector */
+.ch { width: 20px; display: flex; align-items: center; flex-shrink: 0; }
+.lh { height: 1.5px; width: 100%; background: #aaa; position: relative; overflow: visible; }
+.lh-az { background: #0078d4; }
+
+/* 3-path grid */
+.ds-grid { display: grid; grid-template-columns: auto 1fr auto; gap: 4px; align-items: center; }
+.ds-left, .ds-right { display: flex; align-items: center; }
+.ds-paths { display: flex; flex-direction: column; gap: 6px; }
+.path { display: flex; align-items: center; }
+
+/* Animated dots */
+.dot { position: absolute; width: 5px; height: 5px; border-radius: 50%; top: -2px; }
+.dot-d { background: #00b7c3; box-shadow: 0 0 4px #00b7c3; left: -2px; animation: dd 1.4s ease-in-out infinite; }
+.dot-r { background: #00b7c3; box-shadow: 0 0 4px #00b7c3; animation: dr 1.2s ease-in-out infinite; }
+.dot-r2 { animation-delay: .3s; }
+.dot-r3 { animation-delay: .5s; }
+.dot-r4 { animation-delay: .8s; }
+.dot-r5 { animation-delay: .2s; }
+.dot-az { background: #0078d4; box-shadow: 0 0 4px #0078d4; }
+
+@keyframes dd { 0% { top: -5px; opacity: 0; } 15% { opacity: 1; } 85% { opacity: 1; } 100% { top: 100%; opacity: 0; } }
+@keyframes dr { 0% { left: -5px; opacity: 0; } 15% { opacity: 1; } 85% { opacity: 1; } 100% { left: 100%; opacity: 0; } }
+
+.ds-foot { font-size: .52em; color: #888; text-align: center; margin-top: .4em; }
 </style>
