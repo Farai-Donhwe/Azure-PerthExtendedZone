@@ -102,33 +102,83 @@ transition: slide-up
 
 # Azure Extended Zones <span style="font-size:0.45em; font-weight:400; color: #6e6e6e;">— is an extension of Azure Region</span>
 
-<div class="grid grid-cols-[1.1fr_1fr] gap-6 mt-2">
+<div class="mermaid-wrap">
 
-<div>
-<OverviewDiagram />
+```mermaid {theme: 'dark', scale: 0.62}
+graph TB
+    subgraph UI["User Interfaces"]
+        Portal["🖥️ Portal"]
+        API["{ } REST API"]
+        CLI["⌨️ CLI / PS"]
+    end
+
+    subgraph MGMT["Azure Management and Services"]
+        direction LR
+        Policy["🛡️ Policy"]
+        SC["🔒 Security Center"]
+        AAD["👥 Azure AD"]
+        ARM["📋 ARM Templates"]
+        Graph["🔗 Graph"]
+        Audit["📝 Audit"]
+        Inv["📦 Inventory"]
+        Bill["💲 Billing"]
+        Mon["📈 Monitoring"]
+        Sec["🔐 Secrets"]
+        Gov["🏛️ Governance"]
+        Comp["✅ Compliance"]
+    end
+
+    subgraph INFRA_CTRL["Azure Infra and Service Control"]
+        Gear["⚙️ Service Control"]
+    end
+
+    CP["Azure Control Plane"]
+
+    subgraph EZ["Extended Zone Azure Services"]
+        direction LR
+        VM["🖥️ Virtual Machines"]
+        K8S["☸ Kubernetes Service"]
+        VNet["🌐 Virtual Network"]
+        PL["🔗 Private Links"]
+        Disk["💿 Disks"]
+        Stor["📦 Storage Accounts"]
+        SQL["🗄️ SQL Server"]
+        PG["🐘 PostgreSQL"]
+        Auto["⚙️ Automation"]
+    end
+
+    EZI["Extended Zone Infrastructure"]
+    CU["👤 Customer User"]
+    CM["📋 Customer Management"]
+
+    UI <--> MGMT
+    MGMT <--> INFRA_CTRL
+    MGMT --> CP
+    CP --> EZ
+    EZ --> EZI
+    EZI --> CU
+    CM --- EZI
+    CM --- CU
+
+    style CP fill:#0078d4,stroke:#00b7c3,color:#fff,font-weight:bold
+    style UI fill:#0e1726,stroke:#2a3a52,color:#a0b4cc
+    style MGMT fill:#0e1726,stroke:#1e3050,color:#fff
+    style INFRA_CTRL fill:#0e1726,stroke:#1e3050,color:#a0b4cc
+    style EZ fill:#0e1726,stroke:#1e3050,color:#fff
+    style EZI fill:#0e1726,stroke:#1e3050,color:#a0b4cc
+    style CU fill:#0e1726,stroke:#1e3050,color:#a0b4cc
+    style CM fill:#0e1726,stroke:#0078d4,color:#a0b4cc
+```
+
 </div>
 
-<div style="font-size: 0.82em; line-height: 1.55;">
-
-<p>Azure Extended Zones are <strong>small-footprint extensions</strong> of an Azure region, placed close to users in metropolitan areas or specific jurisdictions.</p>
-
-<div v-click class="feature-card mb-2 mt-3">
-<h4>🏗️ Architecture</h4>
-<p>The <strong>control plane</strong> remains in the parent Azure region while the <strong>data plane</strong> is deployed at the Extended Zone site — resulting in a smaller Azure footprint with full management integration.</p>
-</div>
-
-<div v-click class="feature-card mb-2">
-<h4>⚡ Low Latency</h4>
-<p>Run latency-sensitive and throughput-intensive applications <strong>close to end users</strong>.</p>
-</div>
-
-<div v-click class="feature-card mb-2">
-<h4>📍 Data Residency</h4>
-<p>Host data locally to meet <strong>privacy, regulatory, and compliance</strong> requirements.</p>
-</div>
-
-</div>
-</div>
+<style>
+.mermaid-wrap {
+  display: flex;
+  justify-content: center;
+  margin-top: -0.5em;
+}
+</style>
 
 ---
 layout: section
