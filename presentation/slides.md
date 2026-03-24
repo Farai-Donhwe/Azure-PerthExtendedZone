@@ -98,34 +98,40 @@ layout: section
 
 ---
 transition: slide-up
-layout: two-cols
-layoutClass: gap-16
 ---
 
-# What are Azure Extended Zones?
+# What are Azure Extended Zones? <span style="font-size:0.4em; font-weight:400; color: #6e6e6e;">— an extension of Azure Region</span>
+
+<div class="grid grid-cols-[1.3fr_1fr] gap-6" style="height: calc(100vh - 10rem); align-items: stretch;">
+
+<div style="display: flex; align-items: center;">
+<img src="/images/overview-diagram.png" alt="Azure Extended Zones Architecture" style="width: 100%; max-height: 100%; object-fit: contain; border-radius: 6px;" />
+</div>
+
+<div style="display: flex; flex-direction: column; justify-content: center; gap: 1.2em; font-size: 0.82em; line-height: 1.6;">
 
 <v-clicks>
 
-- **Small-footprint extensions** of an Azure region
-- Located in metropolitan areas & industry hubs
-- Support VMs, containers, storage, select services
-- **Control plane** → parent region
-- **Data plane** → Extended Zone site
-- Integrated into **Microsoft global network**
+- **Small-footprint extensions** of an Azure region placed in metropolitan areas and industry hubs
+- **Control plane** remains in the parent Azure region
+- **Data plane** deployed at the Extended Zone site — smaller Azure footprint
+- Integrated into the **Microsoft global network** for secure, reliable connectivity
+- Supports **VMs, containers, storage** and a selection of Azure services
 
 </v-clicks>
 
-::right::
+<div v-click class="p-3 rounded-lg" style="background: rgba(0,120,212,0.08); border-left: 3px solid #0078d4;">
 
-<div v-click class="mt-12">
-
-## Two Key Scenarios
+**Two Key Scenarios**
 
 | Scenario | Description |
 |:---------|:------------|
-| **Latency** | Run resources close to end users |
-| **Data Residency** | Keep data within a specific geography |
+| **⚡ Latency** | Run latency-sensitive applications close to end users |
+| **📍 Data Residency** | Keep data within a specific geography for compliance |
 
+</div>
+
+</div>
 </div>
 
 ---
