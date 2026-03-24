@@ -1,71 +1,79 @@
 <template>
-<div class="de-diagram">
-  <div class="de-node de-gray">Remote Location</div>
-  <div class="de-conn"><div class="de-line-v"><div class="de-dot-down"></div></div></div>
-  <div class="de-node de-blue">Internet</div>
-  <div class="de-row">
-    <div class="de-side-path">
-      <div class="de-side-line"><div class="de-dot-up"></div></div>
-      <div class="de-side-line"><div class="de-dot-up de-dot-up-2"></div></div>
+<div class="de">
+  <div class="de-grid">
+    <!-- Left column: On-Premise + Remote -->
+    <div class="de-left">
+      <div class="n n-gray n-sm">Remote<br>Location</div>
+      <div class="cv"><div class="lv"><div class="dot dot-d"></div></div></div>
+      <div class="n n-gray n-sm n-dc">On-Premise<br>Datacentre</div>
     </div>
-    <div class="de-center-col">
-      <div class="de-conn"><div class="de-line-v"><div class="de-dot-down"></div></div></div>
-      <div class="de-node de-gray">VPN</div>
-      <div class="de-conn"><div class="de-line-v de-line-az"><div class="de-dot-down de-dot-az"></div></div></div>
-    </div>
-  </div>
-  <div class="de-bottom">
-    <div class="de-node de-gray de-sm">On-Premise DC</div>
-    <div class="de-conn-h"><div class="de-line-h de-line-az"><div class="de-dot-right de-dot-az"></div></div></div>
-    <div class="de-node de-azure de-sm">ExpressRoute</div>
-    <div class="de-conn-h"><div class="de-line-h de-line-az"><div class="de-dot-right de-dot-az"></div></div></div>
-    <div class="de-node de-azure-strong de-sm">Azure EZ vNet</div>
-    <div class="de-peer">
-      <div class="de-peer-arrows">
-        <div class="de-line-h de-line-grn"><div class="de-dot-right de-dot-grn"></div></div>
-        <div class="de-line-h de-line-grn"><div class="de-dot-left de-dot-grn"></div></div>
+
+    <!-- Center: 3 connection paths -->
+    <div class="de-paths">
+      <div class="path">
+        <div class="ch"><div class="lh"><div class="dot dot-r"></div></div></div>
+        <div class="n n-blue n-sm">Internet</div>
+        <div class="ch"><div class="lh"><div class="dot dot-r dot-d2"></div></div></div>
       </div>
-      <div class="de-peer-label">vNet Peering</div>
+      <div class="path">
+        <div class="ch"><div class="lh"><div class="dot dot-r dot-d3"></div></div></div>
+        <div class="n n-gray n-sm">VPN¹</div>
+        <div class="ch"><div class="lh"><div class="dot dot-r dot-d4"></div></div></div>
+      </div>
+      <div class="path">
+        <div class="ch"><div class="lh lh-az"><div class="dot dot-r dot-az"></div></div></div>
+        <div class="n n-azure n-sm">ExpressRoute</div>
+        <div class="ch"><div class="lh lh-az"><div class="dot dot-r dot-az dot-d5"></div></div></div>
+      </div>
     </div>
-    <div class="de-node de-green de-sm">Region vNet</div>
+
+    <!-- Right: Azure EZ vNet + Peering + Region vNet -->
+    <div class="de-right">
+      <div class="n n-az-strong n-sm">Azure EZ<br>vNet</div>
+      <div class="peer">
+        <div class="peer-line"><div class="dot dot-r dot-grn"></div></div>
+        <div class="peer-line"><div class="dot dot-l dot-grn"></div></div>
+        <div class="peer-label">vNet Peering</div>
+      </div>
+      <div class="n n-green n-sm">Parent Region<br>vNet</div>
+    </div>
   </div>
-  <div class="de-footnote">Private: ExpressRoute · Public: Std LB · VPN (ISV) · vNet Peering to Region</div>
+  <div class="de-foot">Private: ExpressRoute · Public: Std LB · VPN (ISV¹) · vNet Peering to Region</div>
 </div>
 </template>
 
 <style scoped>
-.de-diagram{display:flex;flex-direction:column;align-items:center;gap:0;font-family:'Segoe UI',sans-serif;font-size:.65em}
-.de-node{padding:.25em .55em;border-radius:5px;font-weight:600;text-align:center;font-size:.85em;white-space:nowrap}
-.de-gray{background:var(--azure-gray-100,#f5f5f5);border:1.5px solid var(--azure-gray-300,#d2d2d2);color:var(--azure-gray-700,#3b3b3b)}
-.de-blue{background:var(--azure-gray-100,#f5f5f5);border:1.5px solid #0078d4;color:#0078d4}
-.de-azure{background:#deecf9;border:1.5px solid #0078d4;color:#005a9e}
-.de-azure-strong{background:#deecf9;border:2px solid #0078d4;color:#005a9e;font-weight:700}
-.de-green{background:#e8f4e8;border:2px solid #107c10;color:#0b5e0b;font-weight:700}
-.de-sm{font-size:.7em;padding:.2em .4em}
-.de-conn{display:flex;justify-content:center;height:16px}
-.de-line-v{width:2px;height:100%;background:#aaa;position:relative;overflow:visible}
-.de-line-az{background:#0078d4}
-.de-dot-down{position:absolute;left:-2px;width:4px;height:4px;border-radius:50%;background:#00b7c3;box-shadow:0 0 3px #00b7c3;animation:ded 1.3s ease-in-out infinite}
-.de-dot-az{background:#0078d4;box-shadow:0 0 3px #0078d4}
-@keyframes ded{0%{top:-4px;opacity:0}15%{opacity:1}85%{opacity:1}100%{top:100%;opacity:0}}
-.de-dot-up{position:absolute;left:-2px;width:4px;height:4px;border-radius:50%;background:#00b7c3;box-shadow:0 0 3px #00b7c3;animation:deu 1.8s ease-in-out infinite}
-.de-dot-up-2{animation-delay:.6s}
-@keyframes deu{0%{bottom:-4px;opacity:0}15%{opacity:1}85%{opacity:1}100%{bottom:100%;opacity:0}}
-.de-row{display:flex;align-items:stretch;width:100%;position:relative}
-.de-side-path{position:absolute;left:18%;display:flex;gap:6px;height:100%}
-.de-side-line{width:2px;height:100%;background:#aaa;position:relative;overflow:visible}
-.de-center-col{display:flex;flex-direction:column;align-items:center;flex:1}
-.de-bottom{display:flex;align-items:center;gap:0;margin-top:.15em}
-.de-conn-h{width:12px;display:flex;align-items:center}
-.de-line-h{height:2px;width:100%;background:#aaa;position:relative;overflow:visible}
-.de-line-grn{background:#107c10}
-.de-dot-right{position:absolute;top:-2px;width:4px;height:4px;border-radius:50%;background:#00b7c3;box-shadow:0 0 3px #00b7c3;animation:der .9s ease-in-out infinite}
-.de-dot-grn{background:#107c10;box-shadow:0 0 3px #107c10}
-.de-dot-left{position:absolute;top:-2px;width:4px;height:4px;border-radius:50%;background:#107c10;box-shadow:0 0 3px #107c10;animation:del .9s ease-in-out infinite .3s}
-@keyframes der{0%{left:-4px;opacity:0}15%{opacity:1}85%{opacity:1}100%{left:100%;opacity:0}}
-@keyframes del{0%{right:-4px;opacity:0;left:auto}15%{opacity:1}85%{opacity:1}100%{right:100%;opacity:0;left:auto}}
-.de-peer{display:flex;flex-direction:column;align-items:center;width:18px}
-.de-peer-arrows{display:flex;flex-direction:column;gap:3px;width:100%}
-.de-peer-label{font-size:.5em;color:#107c10;font-weight:500;white-space:nowrap;margin-top:1px}
-.de-footnote{font-size:.5em;color:#888;margin-top:.3em;text-align:center}
+.de{font-family:'Segoe UI',sans-serif;font-size:.64em}
+.n{padding:.2em .45em;border-radius:4px;font-weight:600;text-align:center;font-size:.78em;white-space:nowrap;line-height:1.3}
+.n-sm{font-size:.72em}
+.n-gray{background:#f5f5f5;border:1.5px solid #d2d2d2;color:#3b3b3b}
+.n-blue{background:#f5f5f5;border:1.5px solid #0078d4;color:#0078d4}
+.n-azure{background:#deecf9;border:1.5px solid #0078d4;color:#005a9e}
+.n-az-strong{background:#deecf9;border:2px solid #0078d4;color:#005a9e;font-weight:700}
+.n-green{background:#e8f4e8;border:2px solid #107c10;color:#0b5e0b;font-weight:700}
+.n-dc{white-space:normal}
+.de-grid{display:grid;grid-template-columns:auto 1fr auto;gap:3px;align-items:center}
+.de-left{display:flex;flex-direction:column;align-items:center;gap:0}
+.de-right{display:flex;align-items:center;gap:0}
+.de-paths{display:flex;flex-direction:column;gap:4px}
+.path{display:flex;align-items:center}
+.cv{display:flex;justify-content:center;height:10px}
+.lv{width:1.5px;height:100%;background:#aaa;position:relative;overflow:visible}
+.ch{width:16px;display:flex;align-items:center;flex-shrink:0}
+.lh{height:1.5px;width:100%;background:#aaa;position:relative;overflow:visible}
+.lh-az{background:#0078d4}
+.dot{position:absolute;width:4px;height:4px;border-radius:50%}
+.dot-d{background:#00b7c3;box-shadow:0 0 3px #00b7c3;left:-1.5px;animation:dd 1.4s ease-in-out infinite}
+.dot-r{background:#00b7c3;box-shadow:0 0 3px #00b7c3;top:-1.5px;animation:dr 1.2s ease-in-out infinite}
+.dot-l{background:#107c10;box-shadow:0 0 3px #107c10;top:-1.5px;animation:dl 1.2s ease-in-out infinite .4s}
+.dot-az{background:#0078d4;box-shadow:0 0 3px #0078d4}
+.dot-grn{background:#107c10;box-shadow:0 0 3px #107c10}
+.dot-d2{animation-delay:.3s}.dot-d3{animation-delay:.5s}.dot-d4{animation-delay:.8s}.dot-d5{animation-delay:.2s}
+@keyframes dd{0%{top:-4px;opacity:0}15%{opacity:1}85%{opacity:1}100%{top:100%;opacity:0}}
+@keyframes dr{0%{left:-4px;opacity:0}15%{opacity:1}85%{opacity:1}100%{left:100%;opacity:0}}
+@keyframes dl{0%{left:calc(100% + 4px);opacity:0}15%{opacity:1}85%{opacity:1}100%{left:-4px;opacity:0}}
+.peer{display:flex;flex-direction:column;align-items:center;width:22px;gap:1px}
+.peer-line{height:1.5px;width:100%;background:#107c10;position:relative;overflow:visible}
+.peer-label{font-size:.45em;color:#107c10;font-weight:600;white-space:nowrap}
+.de-foot{font-size:.48em;color:#888;text-align:center;margin-top:.25em}
 </style>
