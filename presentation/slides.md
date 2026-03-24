@@ -98,40 +98,39 @@ layout: section
 
 ---
 transition: slide-up
+layout: two-cols
+layoutClass: gap-8
 ---
 
-# What are Azure Extended Zones? <span style="font-size:0.4em; font-weight:400; color: #6e6e6e;">— an extension of Azure Region</span>
+# What are Azure Extended Zones?
 
-<div class="grid grid-cols-[1.3fr_1fr] gap-6" style="height: calc(100vh - 10rem); align-items: stretch;">
+<img src="/images/overview-diagram.png" alt="Azure Extended Zones Architecture" style="width: 100%; border-radius: 6px; margin-top: 0.5em;" />
 
-<div style="display: flex; align-items: center;">
-<img src="/images/overview-diagram.png" alt="Azure Extended Zones Architecture" style="width: 100%; max-height: 100%; object-fit: contain; border-radius: 6px;" />
-</div>
+::right::
 
-<div style="display: flex; flex-direction: column; justify-content: center; gap: 1.2em; font-size: 0.82em; line-height: 1.6;">
+<div style="font-size: 0.85em; line-height: 1.7; padding-top: 0.5em;">
 
 <v-clicks>
 
-- **Small-footprint extensions** of an Azure region placed in metropolitan areas and industry hubs
-- **Control plane** remains in the parent Azure region
-- **Data plane** deployed at the Extended Zone site — smaller Azure footprint
-- Integrated into the **Microsoft global network** for secure, reliable connectivity
-- Supports **VMs, containers, storage** and a selection of Azure services
+- **Small-footprint extensions** of an Azure region
+- Located in metropolitan areas & industry hubs
+- **Control plane** remains in parent region
+- **Data plane** at the Extended Zone site
+- Integrated into **Microsoft global network**
+- Supports **VMs, containers, storage** & select services
 
 </v-clicks>
 
-<div v-click class="p-3 rounded-lg" style="background: rgba(0,120,212,0.08); border-left: 3px solid #0078d4;">
+<div v-click class="mt-4 p-3 rounded-lg" style="background: rgba(0,120,212,0.08); border-left: 3px solid #0078d4;">
 
 **Two Key Scenarios**
 
-| Scenario | Description |
-|:---------|:------------|
-| **⚡ Latency** | Run latency-sensitive applications close to end users |
-| **📍 Data Residency** | Keep data within a specific geography for compliance |
+**⚡ Latency** — Run resources close to end users
+
+**📍 Data Residency** — Keep data within a specific geography
 
 </div>
 
-</div>
 </div>
 
 ---
@@ -146,30 +145,30 @@ layout: section
 
 # Perth Extended Zone — Why It Matters
 
-<div class="grid grid-cols-2 gap-8 mt-2">
+<div class="grid grid-cols-2 gap-6 mt-1">
 
 <div>
 
-<div v-click class="feature-card mb-3">
+<div v-click class="feature-card mb-2">
 <h4>🏛️ Data Residency</h4>
-<p>Fulfil data residency and compliance obligations by storing and processing data <strong>within Western Australia</strong></p>
+<p>Store and process data <strong>within Western Australia</strong></p>
 </div>
 
-<div v-click class="feature-card mb-3">
+<div v-click class="feature-card mb-2">
 <h4>⚡ Low Latency</h4>
-<p>Minimise workload latency for <strong>Perth-based users</strong> and applications</p>
+<p>Minimise latency for <strong>Perth-based users</strong></p>
 </div>
 
-<div v-click class="feature-card mb-3">
+<div v-click class="feature-card mb-2">
 <h4>🌱 Sustainability</h4>
-<p>Achieve sustainability goals with local infrastructure</p>
+<p>Local infrastructure for sustainability goals</p>
 </div>
 
 </div>
 
 <div>
 
-<div v-click class="azure-card mt-2">
+<div v-click class="azure-card mt-1">
 
 ### 📍 Key Facts
 
@@ -177,9 +176,7 @@ layout: section
 |:-------|:------|
 | **Parent Region** | Australia East (Sydney) |
 | **Zone Type** | Single-zone location |
-| **ISO 27001** | <span class="status-complete">✅ Compliant</span> |
-| **SOC 2 Type II** | <span class="status-complete">✅ Compliant</span> |
-| **PCI DSS** | <span class="status-complete">✅ Compliant</span> |
+| **Compliance** | ISO 27001 · SOC 2 · PCI DSS ✅ |
 
 </div>
 

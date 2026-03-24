@@ -34,9 +34,9 @@
   display: none;
 }
 
-/* Left content area — roughly 55% */
+/* Left content area — roughly 65% */
 .section-left {
-  flex: 0 0 55%;
+  flex: 0 0 65%;
   display: flex;
   flex-direction: column;
   justify-content: center;
