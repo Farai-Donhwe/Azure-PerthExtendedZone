@@ -98,87 +98,35 @@ layout: section
 
 ---
 transition: slide-up
+layout: two-cols
+layoutClass: gap-16
 ---
 
-# Azure Extended Zones <span style="font-size:0.45em; font-weight:400; color: #6e6e6e;">— is an extension of Azure Region</span>
+# What are Azure Extended Zones?
 
-<div class="mermaid-wrap">
+<v-clicks>
 
-```mermaid {theme: 'dark', scale: 0.62}
-graph TB
-    subgraph UI["User Interfaces"]
-        Portal["🖥️ Portal"]
-        API["{ } REST API"]
-        CLI["⌨️ CLI / PS"]
-    end
+- **Small-footprint extensions** of an Azure region
+- Located in metropolitan areas & industry hubs
+- Support VMs, containers, storage, select services
+- **Control plane** → parent region
+- **Data plane** → Extended Zone site
+- Integrated into **Microsoft global network**
 
-    subgraph MGMT["Azure Management and Services"]
-        direction LR
-        Policy["🛡️ Policy"]
-        SC["🔒 Security Center"]
-        AAD["👥 Azure AD"]
-        ARM["📋 ARM Templates"]
-        Graph["🔗 Graph"]
-        Audit["📝 Audit"]
-        Inv["📦 Inventory"]
-        Bill["💲 Billing"]
-        Mon["📈 Monitoring"]
-        Sec["🔐 Secrets"]
-        Gov["🏛️ Governance"]
-        Comp["✅ Compliance"]
-    end
+</v-clicks>
 
-    subgraph INFRA_CTRL["Azure Infra and Service Control"]
-        Gear["⚙️ Service Control"]
-    end
+::right::
 
-    CP["Azure Control Plane"]
+<div v-click class="mt-12">
 
-    subgraph EZ["Extended Zone Azure Services"]
-        direction LR
-        VM["🖥️ Virtual Machines"]
-        K8S["☸ Kubernetes Service"]
-        VNet["🌐 Virtual Network"]
-        PL["🔗 Private Links"]
-        Disk["💿 Disks"]
-        Stor["📦 Storage Accounts"]
-        SQL["🗄️ SQL Server"]
-        PG["🐘 PostgreSQL"]
-        Auto["⚙️ Automation"]
-    end
+## Two Key Scenarios
 
-    EZI["Extended Zone Infrastructure"]
-    CU["👤 Customer User"]
-    CM["📋 Customer Management"]
-
-    UI <--> MGMT
-    MGMT <--> INFRA_CTRL
-    MGMT --> CP
-    CP --> EZ
-    EZ --> EZI
-    EZI --> CU
-    CM --- EZI
-    CM --- CU
-
-    style CP fill:#0078d4,stroke:#00b7c3,color:#fff,font-weight:bold
-    style UI fill:#0e1726,stroke:#2a3a52,color:#a0b4cc
-    style MGMT fill:#0e1726,stroke:#1e3050,color:#fff
-    style INFRA_CTRL fill:#0e1726,stroke:#1e3050,color:#a0b4cc
-    style EZ fill:#0e1726,stroke:#1e3050,color:#fff
-    style EZI fill:#0e1726,stroke:#1e3050,color:#a0b4cc
-    style CU fill:#0e1726,stroke:#1e3050,color:#a0b4cc
-    style CM fill:#0e1726,stroke:#0078d4,color:#a0b4cc
-```
+| Scenario | Description |
+|:---------|:------------|
+| **Latency** | Run resources close to end users |
+| **Data Residency** | Keep data within a specific geography |
 
 </div>
-
-<style>
-.mermaid-wrap {
-  display: flex;
-  justify-content: center;
-  margin-top: -0.5em;
-}
-</style>
 
 ---
 layout: section
