@@ -1,0 +1,102 @@
+---
+title: Home
+description: "Technical guidance for deploying workloads to the Azure Perth Extended Zone — serving Western Australia with low-latency, data-resident cloud services."
+template: splash
+---
+
+import { CardGrid, LinkCard } from "@astrojs/starlight/components";
+import ZoneDashboard from "../../components/ZoneDashboard.astro";
+
+<section class="landing-hero not-content">
+  <div class="landing-hero__copy">
+    <p class="landing-eyebrow">Azure Extended Zones</p>
+    <h1>
+      <span>Perth Extended Zone</span>
+      <span>Customer Playbook</span>
+    </h1>
+    <p class="landing-hero__tagline">
+      Technical guidance for deploying workloads to the Azure Perth Extended
+      Zone — serving Western Australia with low-latency, data-resident cloud
+      services.
+    </p>
+
+    <div class="landing-hero__actions">
+      <a class="sl-link-button primary not-content" href="overview/">
+        Get Started
+      </a>
+      <a class="sl-link-button minimal not-content" href="design-considerations/">
+        Design Guide
+      </a>
+    </div>
+  </div>
+
+  <div class="landing-hero__demo demo-window">
+    <div class="landing-hero__demo-frame">
+      <ZoneDashboard />
+    </div>
+  </div>
+</section>
+
+<section class="landing-section scenario-frame not-content">
+  <div class="scenario-frame__head">
+    <div class="section-label">Azure Extended Zone</div>
+    <h2>From parent region to local deployment</h2>
+    <p>Low-latency services and data residency for Western Australia.</p>
+  </div>
+
+  <div class="scenario-frame__body">
+    <div class="scenario-frame__columns">
+      <div class="scenario-panel">
+        <div class="scenario-panel__label">Key Scenarios</div>
+        <p>
+          <strong>Latency</strong> — Run resources like media editing software
+          remotely with minimal latency. <strong>Data residency</strong> —
+          Host application data within Western Australia for regulatory and
+          compliance requirements.
+        </p>
+      </div>
+
+      <div class="scenario-panel scenario-panel--tasks">
+        <div class="scenario-panel__label">What's Covered</div>
+        <ul class="scenario-checklist">
+          <li>Service availability, SLAs, and pricing for the Perth Extended Zone.</li>
+          <li>Resource organisation, governance, and management guidance.</li>
+          <li>Networking topologies, ExpressRoute, and connectivity options.</li>
+          <li>Business continuity, disaster recovery, and security design.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="landing-section scenario-frame explore-section not-content">
+  <div class="scenario-frame__head">
+    <div class="section-label">Quick Links</div>
+    <h2>Everything you need to plan your deployment</h2>
+  </div>
+
+  <div class="scenario-frame__body">
+    <CardGrid>
+      <LinkCard
+        title="Overview"
+        description="Extended Zones overview, deployment scenarios, service availability, SLAs, and pricing."
+        href="overview/"
+      />
+      <LinkCard
+        title="Design Considerations"
+        description="Resource organisation, management, governance, observability, networking, BCDR, and security."
+        href="design-considerations/"
+      />
+      <LinkCard
+        title="Competitive Positioning"
+        description="Azure PEZ vs AWS Local Zones — full-service local cloud comparison."
+        href="overview/competitive-positioning/"
+      />
+      <LinkCard
+        title="Use Cases"
+        description="Data residency, low-latency edge workloads, hybrid cloud, and DR scenarios."
+        href="use-cases/"
+      />
+    </CardGrid>
+  </div>
+</section>

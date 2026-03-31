@@ -1,0 +1,379 @@
+---
+// ZoneDashboard — Visual mockup of Azure Extended Zone service provisioning
+// Inspired by the MicroHack AgentChat component
+---
+
+<div class="zone-dashboard">
+  <div class="dash-window">
+    <div class="dash-titlebar">
+      <div class="titlebar-dots">
+        <span class="dot dot-red"></span>
+        <span class="dot dot-yellow"></span>
+        <span class="dot dot-green"></span>
+      </div>
+      <span class="titlebar-text">Azure Extended Zone — Perth</span>
+    </div>
+    <div class="dash-body">
+      <div class="dash-message dash-user">
+        <div class="message-label">DEPLOYMENT</div>
+        <p>
+          Provisioning Perth Extended Zone infrastructure — low-latency
+          services for Western Australia with data residency compliance.
+        </p>
+      </div>
+      <div class="dash-message dash-response">
+        <div class="message-label">SERVICE STATUS</div>
+        <div class="streaming-line" aria-hidden="true">
+          <span class="streaming-line__prompt">az-pez</span>
+          <span class="streaming-line__text"
+            >Deploying services to Perth Extended Zone...</span
+          >
+        </div>
+        <div class="service-list">
+          <div class="service-item">
+            <span class="svc-check svc-check--done"></span>
+            <div class="svc-item__body">
+              <div class="svc-item__copy">
+                <strong class="svc-name" style="color: #78beff;">compute</strong>
+                <span>VMs, VMSS, AKS, Azure Virtual Desktop</span>
+              </div>
+              <span class="svc-state">live</span>
+              <span class="svc-meter"><span style="width: 100%"></span></span>
+            </div>
+          </div>
+          <div class="service-item">
+            <span class="svc-check svc-check--done"></span>
+            <div class="svc-item__body">
+              <div class="svc-item__copy">
+                <strong class="svc-name" style="color: #7ce8ff;">networking</strong>
+                <span>ExpressRoute, Load Balancer, Private Link</span>
+              </div>
+              <span class="svc-state">live</span>
+              <span class="svc-meter"><span style="width: 100%"></span></span>
+            </div>
+          </div>
+          <div class="service-item">
+            <span class="svc-check svc-check--done"></span>
+            <div class="svc-item__body">
+              <div class="svc-item__copy">
+                <strong class="svc-name" style="color: #52d9e2;">storage</strong>
+                <span>Premium Blobs, Files, ADLS Gen2</span>
+              </div>
+              <span class="svc-state">live</span>
+              <span class="svc-meter"><span style="width: 100%"></span></span>
+            </div>
+          </div>
+          <div class="service-item">
+            <span class="svc-check svc-check--active"></span>
+            <div class="svc-item__body">
+              <div class="svc-item__copy">
+                <strong class="svc-name" style="color: #9ccfff;">bcdr</strong>
+                <span>Azure Backup, Site Recovery to Sydney</span>
+              </div>
+              <span class="svc-state">active</span>
+              <span class="svc-meter"><span style="width: 78%"></span></span>
+            </div>
+          </div>
+          <div class="service-item">
+            <span class="svc-check"></span>
+            <div class="svc-item__body">
+              <div class="svc-item__copy">
+                <strong class="svc-name" style="color: #b79dff;">firewall</strong>
+                <span>Azure Firewall, NAT Gateway, App Gateway</span>
+              </div>
+              <span class="svc-state">roadmap</span>
+              <span class="svc-meter"><span style="width: 34%"></span></span>
+            </div>
+          </div>
+        </div>
+        <div class="dash-status">
+          <span class="status-dot"></span>
+          Parent region: Australia East — 4 of 5 service groups provisioned
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="dash-features">
+    <span class="feature-pill">🌏 Data Residency</span>
+    <span class="feature-pill">⚡ Low Latency</span>
+    <span class="feature-pill">🛡️ IRAP PROTECTED</span>
+    <span class="feature-pill">🔄 Built-in DR</span>
+  </div>
+</div>
+
+<style>
+  .zone-dashboard {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .dash-window {
+    position: relative;
+    border-radius: 1rem;
+    overflow: hidden;
+    border: 1px solid rgba(141, 154, 178, 0.24);
+    background:
+      linear-gradient(180deg, rgba(19, 24, 35, 0.98), rgba(13, 17, 24, 0.98)),
+      var(--sl-color-gray-6);
+    box-shadow:
+      0 28px 70px -26px rgba(0, 0, 0, 0.78),
+      0 0 0 1px rgba(255, 255, 255, 0.04),
+      inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  }
+
+  .dash-window::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.06),
+      transparent 14%
+    );
+    pointer-events: none;
+  }
+
+  .dash-titlebar {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    background: rgba(27, 33, 46, 0.95);
+    border-bottom: 1px solid rgba(141, 154, 178, 0.16);
+  }
+
+  .titlebar-dots {
+    display: flex;
+    gap: 6px;
+  }
+
+  .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+  }
+
+  .dot-red { background: #ff5f57; }
+  .dot-yellow { background: #febc2e; }
+  .dot-green { background: #28c840; }
+
+  .titlebar-text {
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    color: #aebed2;
+  }
+
+  .dash-body {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    font-family: var(--font-mono, "IBM Plex Mono", "Consolas", monospace);
+  }
+
+  .message-label {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--sl-color-gray-3);
+    margin-bottom: 0.5rem;
+  }
+
+  .dash-user p {
+    font-size: 0.82rem;
+    line-height: 1.7;
+    color: #e7eef8;
+    margin: 0;
+  }
+
+  .streaming-line {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    margin-bottom: 0.25rem;
+    font-size: 0.72rem;
+    color: #9db0c9;
+  }
+
+  .streaming-line__prompt {
+    color: #7ce8ff;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .streaming-line__text {
+    display: inline-block;
+    max-width: 40ch;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 1px solid rgba(124, 232, 255, 0.7);
+    animation:
+      typing 4.8s steps(48, end) infinite,
+      caret 0.9s step-end infinite;
+  }
+
+  .service-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+
+  .service-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    font-size: 0.78rem;
+    color: #aebed2;
+  }
+
+  .svc-check {
+    width: 18px;
+    height: 18px;
+    margin-top: 0.15rem;
+    border-radius: 999px;
+    border: 1px solid rgba(141, 154, 178, 0.28);
+    background: rgba(255, 255, 255, 0.02);
+    position: relative;
+    flex-shrink: 0;
+  }
+
+  .svc-check--done::after,
+  .svc-check--active::after {
+    content: "";
+    position: absolute;
+    inset: 4px;
+    border-radius: 999px;
+  }
+
+  .svc-check--done::after {
+    background: #78beff;
+  }
+
+  .svc-check--active::after {
+    background: #7ce8ff;
+    animation: pulse-dot 1.8s ease-in-out infinite;
+  }
+
+  .svc-item__body {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 0.35rem 0.75rem;
+    width: 100%;
+  }
+
+  .svc-item__copy {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    min-width: 0;
+  }
+
+  .svc-item__copy span {
+    color: #94a8c2;
+    line-height: 1.45;
+  }
+
+  .svc-state {
+    justify-self: end;
+    color: #8095b2;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.64rem;
+    padding-top: 0.05rem;
+  }
+
+  .svc-meter {
+    grid-column: 1 / -1;
+    display: block;
+    height: 5px;
+    border-radius: 999px;
+    background: rgba(123, 138, 165, 0.16);
+    overflow: hidden;
+  }
+
+  .svc-meter span {
+    display: block;
+    height: 100%;
+    border-radius: 6px;
+    background: linear-gradient(90deg, #4d96da, #7ce8ff);
+    box-shadow: 0 0 14px rgba(124, 232, 255, 0.25);
+  }
+
+  .svc-name {
+    font-weight: 600;
+    font-size: 0.84rem;
+  }
+
+  .dash-status {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.74rem;
+    color: #8ca1bc;
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid rgba(141, 154, 178, 0.12);
+  }
+
+  .status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #28c840;
+    animation: pulse-dot 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse-dot {
+    0%, 100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.4;
+      transform: scale(0.85);
+    }
+  }
+
+  @keyframes typing {
+    0%, 20% { width: 0; }
+    60%, 100% { width: 100%; }
+  }
+
+  @keyframes caret {
+    50% { border-color: transparent; }
+  }
+
+  .dash-features {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 0.9rem;
+  }
+
+  .feature-pill {
+    font-size: 0.75rem;
+    padding: 0.3rem 0.75rem;
+    border-radius: 9999px;
+    background: rgba(28, 34, 45, 0.92);
+    border: 1px solid rgba(124, 135, 160, 0.16);
+    color: var(--sl-color-gray-2);
+  }
+
+  @media (max-width: 640px) {
+    .dash-body {
+      padding: 1rem;
+    }
+    .streaming-line__text {
+      max-width: 24ch;
+    }
+    .svc-item__body {
+      grid-template-columns: 1fr;
+    }
+    .svc-state {
+      justify-self: start;
+    }
+  }
+</style>
